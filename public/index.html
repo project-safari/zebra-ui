@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>APIC</title>
+    <style>
+        .cui .flex-center {
+            display: flex !important;
+            justify-content: center !important;
+        }
+
+        .cui .loading-spinner .wrapper .wheel {
+            position: relative;
+            visibility: visible;
+            width: 64px;
+            height: 64px;
+            border-radius: 100%;
+            border: 2px solid #dfdfdf;
+            border-left-color: #017cad;
+            -webkit-animation: load 1.1s infinite linear;
+            animation: load 1.1s infinite linear;
+        }
+
+        @keyframes load {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes load {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body class="cui cui--animated">
+<noscript>
+    You need to enable JavaScript to run this app.
+</noscript>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+</script>
+<div id="root">
+    <p class="flex-center">Loading, please wait...</p>
+    <div class="loading-spinner flex-center" aria-label="Loading, please wait...">
+        <div class="wrapper">
+            <div class="wheel"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

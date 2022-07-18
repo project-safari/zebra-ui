@@ -1,0 +1,104 @@
+.cui.blueprint .examples {
+    direction: ltr;
+    display: block;
+    text-align: left;
+
+    .view-example-source-link {
+        margin-bottom: 15px;
+    }
+    .row [class^=col-] {
+        margin-bottom: 6px;
+    }
+
+    .examples-header .ex-section-col-header {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    h3.display-4 {
+        color: #39393b;
+        margin-top: 6px;
+
+        &.header-subtitle {
+            color: #87878c;
+            font-weight: 100;
+        }
+    }
+
+
+    .subheader.ex-section-col-header {
+        font-size: 12px;
+        margin-bottom: 6px;
+    }
+
+    > .examples-components-container {
+        margin-bottom: 20px;
+    }
+
+    .examples-header {
+        + div {
+            .section {
+                padding: 10px;
+            }
+        }
+
+        h3.section-title {
+            padding-bottom: 10px;
+        }
+    }
+
+    .examples--section-container {
+        .section-container {
+            margin-bottom: 20px;
+            .section-tools {
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    .examples-subheader {
+        margin-bottom: 12px;
+    }
+
+    .subtitle {
+        color: #7f7f7f;
+        margin-bottom: 10px;
+        font-weight: 500;
+        font-style: italic;
+
+        blockquote {
+            font-size: 1.2rem;
+        }
+    }
+
+    blockquote.ex-section-col-notes {
+        font-size: 12px;
+        padding: 5px;
+        margin-bottom: 10px;
+        &:first-of-type {
+            margin-left: 10px;
+        }
+    }
+
+    .dark-container {
+        display: inline-block;
+        background: #626469;
+        padding: 9px;
+        white-space: nowrap;
+    }
+
+    .medium-dark-container {
+        display: inline-block;
+        background: #999999;
+        padding: 9px;
+        white-space: nowrap;
+    }
+
+    .examples-components-container {
+        display: grid;
+        grid-column-gap: 20px;
+        grid-auto-flow: column;
+        align-items: end;
+    }
+}
