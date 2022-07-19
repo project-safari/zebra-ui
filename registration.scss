@@ -1,0 +1,56 @@
+.register {
+    background: #0D274D;
+    box-sizing: border-box;
+    color: white;
+  }
+  
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100vh;
+  }
+  
+
+  
+
+  
+  .title {
+    font-weight: 700;
+  }
+  
+
+
+  
+  .input_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 3rem;
+      
+    .h2 {
+    min-width: 79px;
+    min-height: 43px;
+    color: white;
+    font-family: 'Sharp Sans';
+    font-style: normal;
+    font-weight: 700 !important;
+    font-size: 32px;
+    line-height: 43px;;
+  }
+    
+    .button_wrapper {
+        width: 100%;
+        justify-content: center;
+        padding: 10px;
+        gap: 5rem;
+    }
+  }
+  
+  
+  .pass, .user {
+    min-width: 358px;
+  }
+  
