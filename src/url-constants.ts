@@ -1,0 +1,5 @@
+export var LOGIN_URL = "http://localhost:9999/login"
+export var REGISTER_URL = "http://localhost:9999/register"
+export var RESOURCE_URL = "http://localhost:9999/api/v1/resource"
+export var LABEL_URL = "http://localhost:9999/api/v1/label"
+export var TYPE_URL = "http://localhost:9999/api/v1/type"
