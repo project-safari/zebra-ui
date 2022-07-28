@@ -82,7 +82,7 @@ export default function Header(props: HeaderProps) {
           <Grid container alignItems="center" spacing={1}>
             <Grid item xs>
               <Typography color="inherit" variant="h5" component="h1">
-                Authentication
+                Project Build
               </Typography>
             </Grid>
             <Grid item>
@@ -107,10 +107,10 @@ export default function Header(props: HeaderProps) {
       </AppBar>
       <AppBar component="div" position="static" elevation={0} sx={{ zIndex: 0 }}>
         <Tabs value={0} textColor="inherit">
+          <Tab label="Inventory" />
           <Tab label="Users" />
-          <Tab label="Sign-in method" />
           <Tab label="Templates" />
-          <Tab label="Usage" />
+          <Tab label="Analytics" />
         </Tabs>
       </AppBar>
     </React.Fragment>

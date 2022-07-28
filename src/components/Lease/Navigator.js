@@ -26,7 +26,7 @@ const categories = [
     id: 'Reservations',
     children: [
       {
-        id: 'Authentication',
+        id: 'Project Build',
         icon: <PeopleIcon />,
         active: true,
       },

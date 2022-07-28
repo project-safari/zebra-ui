@@ -11,6 +11,7 @@ import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import RefreshIcon from '@mui/icons-material/Refresh';
+import InventoryTable from '../../Table/Table';
 
 export default function Content() {
   return (
@@ -29,7 +30,7 @@ export default function Content() {
             <Grid item xs>
               <TextField
                 fullWidth
-                placeholder="Search by email address, name, or user UID"
+                placeholder="Search by resource type, state, creation, or availability"
                 InputProps={{
                   disableUnderline: true,
                   sx: { fontSize: 'default' },
@@ -39,7 +40,7 @@ export default function Content() {
             </Grid>
             <Grid item>
               <Button variant="contained" sx={{ mr: 1 }}>
-                Add user
+                Add Resource
               </Button>
               <Tooltip title="Reload">
                 <IconButton>
@@ -51,8 +52,9 @@ export default function Content() {
         </Toolbar>
       </AppBar>
       <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center">
-        No users for this project yet
+        No resources for this project yet
       </Typography>
+      <InventoryTable />
     </Paper>
   );
 }
