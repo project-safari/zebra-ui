@@ -25,7 +25,7 @@ const categories = [
     id: 'Build',
     children: [
       {
-        id: 'Authentication',
+        id: 'Project Build',
         icon: <PeopleIcon />,
         active: true,
       },

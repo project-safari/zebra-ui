@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -12,6 +12,7 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
+import InventoryTable from './components/Table/Table';
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/register" element={<SignUp />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/" element={<Home />} />
+        <Route path='/table' element={<InventoryTable/>} />
       </Routes>
     </Router>
   );
