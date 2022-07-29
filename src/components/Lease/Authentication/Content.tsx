@@ -11,6 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import InventoryTable from '../../Table/Table';
+import ResourceDatagrid from '../../Datagrid/ResourceDatagrid';
 
 export default function Content() {
   return (
@@ -53,7 +54,7 @@ export default function Content() {
       <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center">
         No users for this project yet
       </Typography>
-      <InventoryTable />
+      <ResourceDatagrid />
     </Paper>
   );
 }
