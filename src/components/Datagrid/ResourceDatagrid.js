@@ -3,14 +3,22 @@ import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 import axios from 'axios';
 
-
 const columns = [
     { field: 'type', headerName: 'Resource Type', width: 150, editable: true, },
     { field: 'fault', headerName: 'Fault State', width: 150, editable: true, 
-        valueGetter: (params) => params.row.status.fault,
+        valueGetter: (params) => params.row.status.fault, 
     },
     { field: 'state', headerName: 'Status', width: 150, editable: true, 
         valueGetter: (params) => params.row.status.state,
+        renderCell: (params) => {
+            if (params.value === 'active') {
+                return <span style={{ color: 'green' }}>{params.value} </span>;
+            } else if (params.value === 'inactive') {
+                return <span style={{ color: 'red' }}>{params.value}</span>;
+            } else {
+                return <span>{params.value}</span>;
+            }
+        }
     },
     { field: 'createdTime', headerName: 'Time Created', width: 150, editable: true, 
         valueGetter: (params) => params.row.status.createdTime,    
