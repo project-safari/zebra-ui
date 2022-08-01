@@ -6,8 +6,11 @@ import SecurityIcon from '@mui/icons-material/Security';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
 import WarningIcon from '@mui/icons-material/Warning';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import { red, green } from '@mui/material/colors';
 import Chip from '@mui/material/Chip';
+import renderCellExpand from '../../utils/renderCellExpand';
 import axios from 'axios';
 
 function getChipProps(params){
@@ -54,18 +57,31 @@ const columns = [
     },
     { field: 'description', headerName: 'Description', width: 300, editable: true, 
         valueGetter: (params) => JSON.stringify(params.row.labels),},
-    { field: 'actions', headerName: 'Actions', width: 125, editable: true,
+    { field: 'actions', headerName: 'Actions', width: 150, editable: true,
         renderCell: (params) => {
             return (
                 <Box display='flex' flexDirection='row' alignItems='center' justifyContent='center'>
                     <Box mr={1}>
-                        <DeleteIcon />
+                        <IconButton aria-label="delete" > 
+                            <DeleteIcon 
+                                onClick={ async () => {
+                                    await axios.delete(`http://localhost:9999/api/resources/${params.row.name}`);
+                                    window.location.reload();
+
+                                    
+                                }
+                            } />
+                        </IconButton> 
                     </Box>
                     <Box mr={1}>
-                        <SecurityIcon />
+                        <IconButton aria-label="delete" > 
+                            <SecurityIcon />
+                        </IconButton> 
                     </Box>
                     <Box mr={1}>
-                        <FileCopyIcon />
+                        <IconButton aria-label="delete" > 
+                            <FileCopyIcon />
+                        </IconButton> 
                     </Box>
                 </Box>
             );

@@ -13,6 +13,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import InventoryTable from '../../Table/Table';
 import ResourceDatagrid from '../../Datagrid/ResourceDatagrid';
+import ResourceAreaChart from '../../Charts/AreaChart';
+import ResourceComposedChart from '../../Charts/ComposedChart';
 import Available from '../../Cards/Available';
 import Health from '../../Cards/Health';
 import Status from '../../Cards/Status'
@@ -26,17 +28,16 @@ export default function Content() {
         elevation={0}
         sx={{ borderBottom: '1px solid rgba(0, 0, 0, 0.12)' }}
       >
-      <Grid container spacing={3}  justifyContent="space-between">
+      <Grid container spacing={2}  justifyContent="space-between">
         <Grid item>
           <Available />
         </Grid>
         <Grid item xs>
           <Health />
         </Grid>
-        <Grid item>
-          <Status />
-        </Grid>
       </Grid>
+
+
         <Toolbar>
           <Grid container spacing={2} alignItems="center">
             <Grid item>
