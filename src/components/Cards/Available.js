@@ -11,13 +11,13 @@ const card = (
     <React.Fragment>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Available Resources
+          Zebra System Traffic
         </Typography>
         <Typography variant="h5" component="div">
             3,045
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          Available to Lease
+          Systems available to Lease
         </Typography>
         <ResourceAreaChart />
       </CardContent>

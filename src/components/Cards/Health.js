@@ -11,13 +11,13 @@ const card = (
     <React.Fragment>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Critical Faults
+          Zebra Setup Critical Faults
         </Typography>
         <Typography variant="h5" component="div">
-            15
+            15 
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          Systems
+          Systems are experiencing critical faults and need attention.
         </Typography>
         <ResourceComposedChart />
       </CardContent>

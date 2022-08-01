@@ -67,8 +67,6 @@ const columns = [
                                 onClick={ async () => {
                                     await axios.delete(`http://localhost:9999/api/resources/${params.row.name}`);
                                     window.location.reload();
-
-                                    
                                 }
                             } />
                         </IconButton> 
