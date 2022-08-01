@@ -4,9 +4,31 @@ import { DataGrid } from '@mui/x-data-grid';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SecurityIcon from '@mui/icons-material/Security';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
+import WarningIcon from '@mui/icons-material/Warning';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { red, green } from '@mui/material/colors';
+import Chip from '@mui/material/Chip';
 import axios from 'axios';
 
-
+function getChipProps(params){
+    if (params.value === "inactive") {
+      return {
+        icon: <WarningIcon style={{ fill: red[500] }} />,
+        label: params.value,
+        style: {
+            borderColor: red[500],
+        }
+      };
+    } else {
+      return {
+        icon: <CheckCircleIcon  style={{ fill: green[500] }} />,
+        label: params.value,
+        style: {   
+            borderColor: green[500],
+        }
+      };
+    }
+  }
 
 const columns = [
     { field: 'type', headerName: 'Resource Type', width: 150, editable: true, },
@@ -17,7 +39,7 @@ const columns = [
         valueGetter: (params) => params.row.status.state,
         renderCell: (params) => {
             if (params.value === 'active') {
-                return <span style={{ color: 'green' }}>{params.value} </span>;
+                return <Chip variant='outlined' size='small' {...getChipProps(params)} />;
             } else if (params.value === 'inactive') {
                 return <span style={{ color: 'red' }}>{params.value}</span>;
             } else {
