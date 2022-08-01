@@ -31,10 +31,9 @@ function getChipProps(params){
   }
 
 const columns = [
+    { field: 'name', headerName: 'Resource Name', width: 150, editable: true },
     { field: 'type', headerName: 'Resource Type', width: 150, editable: true, },
-    { field: 'fault', headerName: 'Fault State', width: 150, editable: true, 
-        valueGetter: (params) => params.row.status.fault, 
-    },
+    { field: 'address', headerName: 'Locations', width: 150, editable: true, },
     { field: 'state', headerName: 'Status', width: 150, editable: true, 
         valueGetter: (params) => params.row.status.state,
         renderCell: (params) => {
@@ -53,6 +52,25 @@ const columns = [
     { field: 'lease', headerName: 'Lease Availability', width: 150, editable: true,
         valueGetter: (params) => params.row.status.lease,
     },
+    { field: 'description', headerName: 'Description', width: 300, editable: true, 
+        valueGetter: (params) => JSON.stringify(params.row.labels),},
+    { field: 'actions', headerName: 'Actions', width: 125, editable: true,
+        renderCell: (params) => {
+            return (
+                <Box display='flex' flexDirection='row' alignItems='center' justifyContent='center'>
+                    <Box mr={1}>
+                        <DeleteIcon />
+                    </Box>
+                    <Box mr={1}>
+                        <SecurityIcon />
+                    </Box>
+                    <Box mr={1}>
+                        <FileCopyIcon />
+                    </Box>
+                </Box>
+            );
+        }
+    }
 ];
 
 export default function ResourceDatagrid() {
@@ -142,7 +160,7 @@ export default function ResourceDatagrid() {
                 'http://localhost:9999/api/v1/resources'
             );
             setData(data.data.Datacenter);
-            console.log(data.data.Datacenter[0].status);
+            console.log(data.data.Datacenter);
             }
         catch (e) {
             setError(e);
@@ -163,12 +181,12 @@ export default function ResourceDatagrid() {
     }
 
   return (
-    <Box sx={{ height: 400, width: '100%' }}>
+    <Box sx={{ height: 650, width: '100%' }}>
       <DataGrid
         rows={ data }
         columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
+        pageSize={20}
+        rowsPerPageOptions={[10]}
         checkboxSelection
         disableSelectionOnClick
       />
