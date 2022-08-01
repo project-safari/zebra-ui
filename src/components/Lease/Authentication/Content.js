@@ -13,16 +13,30 @@ import SearchIcon from '@mui/icons-material/Search';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import InventoryTable from '../../Table/Table';
 import ResourceDatagrid from '../../Datagrid/ResourceDatagrid';
+import Available from '../../Cards/Available';
+import Health from '../../Cards/Health';
+import Status from '../../Cards/Status'
 
 export default function Content() {
   return (
-    <Paper sx={{ maxWidth: 936, margin: 'auto', overflow: 'hidden' }}>
+    <Paper sx={{ maxWidth: 1400, margin: 'auto', overflow: 'hidden' }}>
       <AppBar
         position="static"
         color="default"
         elevation={0}
         sx={{ borderBottom: '1px solid rgba(0, 0, 0, 0.12)' }}
       >
+      <Grid container spacing={3}  justifyContent="space-between">
+        <Grid item>
+          <Available />
+        </Grid>
+        <Grid item xs>
+          <Health />
+        </Grid>
+        <Grid item>
+          <Status />
+        </Grid>
+      </Grid>
         <Toolbar>
           <Grid container spacing={2} alignItems="center">
             <Grid item>
@@ -52,10 +66,11 @@ export default function Content() {
           </Grid>
         </Toolbar>
       </AppBar>
-      <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center">
-        No resources for this project yet
-      </Typography>
-      <ResourceDatagrid />
+      <Grid container spacing={2}>
+        <Grid item xs>
+          <ResourceDatagrid />
+        </Grid>
+      </Grid>
     </Paper>
   );
 }
