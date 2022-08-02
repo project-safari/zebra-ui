@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React, {useContext, useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,6 +13,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { AuthContext } from '../../context/AuthContext';
 import axios from 'axios';
 import { LOGIN_URL } from '../../url-constants';
 
@@ -19,16 +21,24 @@ const theme = createTheme();
 
 
 export default function SignIn() {
+  const navigate = useNavigate();
+
   const handleSubmit = async(event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    axios.post(LOGIN_URL, {
-      user: data.get('email'),
-      password: data.get('password'),
-    })
-    .then((response) => {
-      console.log(response);
-    });
+    try{ 
+      axios.post(LOGIN_URL, {
+        user: data.get('email'),
+        password: data.get('password'),
+      })
+      .then((response) => {
+        navigate('/');
+        console.log(response);
+      });
+    } catch (e) {
+      console.log(e);
+
+    };
   };
 
   return (
