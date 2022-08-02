@@ -5,6 +5,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import PieChart from '../Charts/PieChart';
 
 const card = (
     <React.Fragment>
@@ -18,7 +19,7 @@ const card = (
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
           Resources
         </Typography>
-
+        <PieChart />
       </CardContent>
       <CardActions>
         <Button size="small">More Details</Button>
