@@ -74,7 +74,7 @@ export default function Navigator(props: DrawerProps) {
           Zebra
         </ListItem>
         <NavLink
-          to="dashboard"
+          to="lease-office"
         >
           <ListItem sx={{ ...item, ...itemCategory }}>
             <ListItemIcon>

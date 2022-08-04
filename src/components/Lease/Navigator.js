@@ -18,8 +18,7 @@ import SettingsInputComponentIcon from '@mui/icons-material/SettingsInputCompone
 import TimerIcon from '@mui/icons-material/Timer';
 import SettingsIcon from '@mui/icons-material/Settings';
 import PhonelinkSetupIcon from '@mui/icons-material/PhonelinkSetup';
-import {NavLink} from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 
 const categories = [
   {
@@ -62,8 +61,15 @@ const itemCategory = {
   px: 3,
 };
 
+
 export default function Navigator(props) {
   const { ...other } = props;
+  const navigate = useNavigate();
+
+
+  const handleClick = (e) => {
+    navigate(e.target.getAttribute('href'));
+  }
 
   return (
     <Drawer variant="permanent" {...other}>
@@ -71,28 +77,28 @@ export default function Navigator(props) {
         <ListItem sx={{ ...item, ...itemCategory, fontSize: 22, color: '#fff' }}>
           Zebra Admin
         </ListItem>
-        <NavLink
-          to="dashboard"
-        >
-          <ListItem sx={{ ...item, ...itemCategory }}>
+        <Link href="/" onClick={handleClick} underline="none" color="inherit" >
+          <ListItem sx={{ ...item, ...itemCategory }} >
             <ListItemIcon>
               <HomeIcon/>
             </ListItemIcon>
             <ListItemText>Project Overview</ListItemText>
           </ListItem>
-        </NavLink>
+        </Link>
         {categories.map(({ id, children }) => (
           <Box key={id} sx={{ bgcolor: '#101F33' }}>
             <ListItem sx={{ py: 2, px: 3 }}>
               <ListItemText sx={{ color: '#fff' }}>{id}</ListItemText>
             </ListItem>
             {children.map(({ id: childId, icon, active }) => (
-              <ListItem disablePadding key={childId}>
-                <ListItemButton selected={active} sx={item}>
-                  <ListItemIcon>{icon}</ListItemIcon>
-                  <ListItemText>{childId}</ListItemText>
-                </ListItemButton>
-              </ListItem>
+              <Link href={`/${childId}`} onClick={handleClick} underline="none" color="inherit" key={childId}>
+                <ListItem disablePadding key={childId}>
+                  <ListItemButton selected={active} sx={item} >
+                    <ListItemIcon>{icon}</ListItemIcon>
+                    <ListItemText>{childId}</ListItemText>
+                  </ListItemButton>
+                </ListItem>
+              </Link>
             ))}
 
             <Divider sx={{ mt: 2 }} />

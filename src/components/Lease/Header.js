@@ -2,23 +2,46 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Avatar from '@mui/material/Avatar';
+import { Alert, Collapse } from '@mui/material';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import HelpIcon from '@mui/icons-material/Help';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import PersonAdd from '@mui/icons-material/PersonAdd';
+import Settings from '@mui/icons-material/Settings';
+import Logout from '@mui/icons-material/Logout';
+import CloseIcon from '@mui/icons-material/Close';
+import ListItemIcon from '@mui/material/ListItemIcon';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
+import Divider  from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const lightColor = 'rgba(255, 255, 255, 0.7)';
 
 function Header(props) {
   const { onDrawerToggle } = props;
+  const navigate = useNavigate();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const [alertOpen, setAlertOpen] = React.useState(false);
 
   return (
     <React.Fragment>
@@ -36,35 +59,109 @@ function Header(props) {
               </IconButton>
             </Grid>
             <Grid item xs />
-            <Grid item>
-              <Link
-                href="/"
-                variant="body2"
-                sx={{
-                  textDecoration: 'none',
-                  color: lightColor,
-                  '&:hover': {
-                    color: 'common.white',
-                  },
-                }}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                Go to docs
-              </Link>
-            </Grid>
-            <Grid item>
+              <Collapse in={alertOpen}>
+                <Alert
+                  action={
+                      <IconButton 
+                        color="inherit" 
+                        aria-label="close"
+                        size="small"
+                        onClick={() => {
+                          setAlertOpen(false);
+                        }}  
+                      >
+                        <CloseIcon fontSize="inherit" />
+                      </IconButton>
+                  }
+                >
+                You have successfully created a lease-request. Your request will be filled soon.
+                </Alert>
+              </Collapse>
+              <Grid item>
               <Tooltip title="Alerts • No alerts">
-                <IconButton color="inherit">
+                <IconButton 
+                  color='inherit' 
+                  onClick={() => {
+                    setAlertOpen(true);
+                  }}
+                  disabled={alertOpen}
+                >
                   <NotificationsIcon />
                 </IconButton>
               </Tooltip>
             </Grid>
             <Grid item>
-              <IconButton color="inherit" sx={{ p: 0.5 }}>
+              <IconButton 
+                color="inherit" 
+                onClick={handleMenu} 
+                sx={{ p: 0.5 }} 
+                aria-controls={open ? 'account-menu' : undefined} 
+                aria-haspopup="true" 
+                aria-expanded={open ? "true" : undefined}>
                 <Avatar src="/static/images/avatar/1.jpg" alt="My Avatar" />
               </IconButton>
             </Grid>
+            <Menu
+              anchorEl={anchorEl}
+              id="account-menu"
+              open={open}
+              onClose={handleClose}
+              onClick={handleClose}
+              PaperProps={{
+                elevation: 0,
+                sx: {
+                  overflow: 'visible',
+                  filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                  mt: 1.5,
+                  '& .MuiAvatar-root': {
+                    width: 32,
+                    height: 32,
+                    ml: -0.5,
+                    mr: 1,
+                  },
+                  '&:before': {
+                    content: '""',
+                    display: 'block',
+                    position: 'absolute',
+                    top: 0,
+                    right: 14,
+                    width: 10,
+                    height: 10,
+                    bgcolor: 'background.paper',
+                    transform: 'translateY(-50%) rotate(45deg)',
+                    zIndex: 0,
+                  },
+                },
+              }}
+              transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+            >
+            <MenuItem>
+              <Avatar /> Profile
+            </MenuItem>
+            <MenuItem>
+              <Avatar /> My account
+            </MenuItem>
+            <Divider />
+            <MenuItem>
+              <ListItemIcon>
+                <PersonAdd fontSize="small" />
+              </ListItemIcon>
+              Add another account
+            </MenuItem>
+            <MenuItem>
+              <ListItemIcon>
+                <Settings fontSize="small" />
+              </ListItemIcon>
+              Settings
+            </MenuItem>
+            <MenuItem>
+              <ListItemIcon>
+                <Logout fontSize="small" />
+              </ListItemIcon>
+              Logout
+            </MenuItem>
+          </Menu>
           </Grid>
         </Toolbar>
       </AppBar>
@@ -104,10 +201,14 @@ function Header(props) {
       </AppBar>
       <AppBar component="div" position="static" elevation={0} sx={{ zIndex: 0 }}>
         <Tabs value={0} textColor="inherit">
-          <Tab label="Inventory" />
-          <Tab label="Users" />
-          <Tab label="Templates" />
-          <Tab label="Analytics" />
+          <Tab label="Inventory" 
+            onClick={() => navigate('/inventory')} />
+          <Tab label="Users" 
+            onClick={() => navigate('/users')} />
+          <Tab label="Templates" 
+            onClick={() => navigate('/templates')} />
+          <Tab label="Analytics" 
+            onClick={() => navigate('/analytics')} />
         </Tabs>
       </AppBar>
     </React.Fragment>
