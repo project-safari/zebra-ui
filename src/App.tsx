@@ -7,6 +7,7 @@ import SignUp from './components/Register/SignUp';
 import SignIn from './components/SignIn/SignIn';
 import Dashboard from './components/Dashboard/Dashboard';
 import Home from './components/Lease/Home';
+import LeaseHome from './components/Lease/LeaseOffice/Home';
 import {
   BrowserRouter as Router,
   Routes,
@@ -23,7 +24,7 @@ export default function App() {
         <Route path="/register" element={<SignUp />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/" element={<Home />} />
-        <Route path='/table' element={<InventoryTable/>} />
+        <Route path="/leasing" element={<LeaseHome />} />
         <Route path='/datagrid' element={<ResourceDatagrid/>} />
       </Routes>
     </Router>
