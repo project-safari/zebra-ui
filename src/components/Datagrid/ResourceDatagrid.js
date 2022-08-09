@@ -11,9 +11,9 @@ import IconButton from '@mui/material/IconButton';
 import { red, green } from '@mui/material/colors';
 import Chip from '@mui/material/Chip';
 import renderCellExpand from '../../utils/renderCellExpand';
+import { RESOURCE_URL } from '../../constants/urls';
 import axios from 'axios';
 
-require('dotenv').config();
 
 function getChipProps(params){
     if (params.value === "inactive") {
@@ -67,7 +67,7 @@ const columns = [
                         <IconButton aria-label="delete" > 
                             <DeleteIcon 
                                 onClick={ async () => {
-                                    await axios.delete(process.env.RESOURCE_URL`${params.row.name}`);
+                                    await axios.delete(RESOURCE_URL`${params.row.name}`);
                                     window.location.reload();
                                 }
                             } />
@@ -98,7 +98,7 @@ export default function ResourceDatagrid() {
     const deleteRow = React.useCallback(async (params) => {
         const { rowData } = params;
         const { id } = rowData;
-        const url = `${process.env.RESOURCE_URL}${id}`;
+        const url = `${RESOURCE_URL}${id}`;
         const response = await axios.delete(url);
         if (response.status === 200) {
             const newData = data.filter(row => row.id !== id);
@@ -110,7 +110,7 @@ export default function ResourceDatagrid() {
     const toggleStatus = React.useCallback(async (params) => {
         const { rowData } = params;
         const { id } = rowData;
-        const url = `${process.env.RESOURCE_URL}${id}/status`;
+        const url = `${RESOURCE_URL}${id}/status`;
         const response = await axios.put(url);
         if (response.status === 200) {
             const newData = data.map(row => {
@@ -128,7 +128,7 @@ export default function ResourceDatagrid() {
     const createRow = React.useCallback(async (params) => {
         const { rowData } = params;
         const { id } = rowData;
-        const url = `${process.env.RESOURCE_URL}${id}/status`;
+        const url = `${RESOURCE_URL}${id}/status`;
         const response = await axios.put(url);
         if (response.status === 200) {
             const newRow = {
@@ -150,7 +150,7 @@ export default function ResourceDatagrid() {
     const updateRow = React.useCallback(async (params) => {
         const { rowData } = params;
         const { id } = rowData;
-        const url = `${process.env.RESOURCE_URL}${id}`;
+        const url = `${RESOURCE_URL}${id}`;
         const response = await axios.put(url);
         if (response.status === 200) {
             const newData = data.map(row => {
