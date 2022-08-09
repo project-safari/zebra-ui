@@ -1,30 +1,33 @@
-// Create a session commponent that will use the /refresh api to refresh the session and direct the user to the login page if the session is expired.
+// Session component that checks if the user is logged in and renders the appropriate component.
+// Calls Refresh API to check if the user is logged in. 
+//
+import React from 'react';
+import { useContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useHistory } from "react-router-dom";
-
-require("dotenv").config();
-
+require('dotenv').config();
 
 export default function Session() {
-    const [session, setSession] = useState(null);
-    const history = useHistory();
+    const navigate = useNavigate();
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
     useEffect(() => {
-        const getSession = async () => {
-        const res = await axios.get(process.env.REFRESH_URL);
-        setSession(res.data);
-        }
-        getSession();
-    } , [])
-    useEffect(() => {
-        if (!session) {
-        history.push("/login");
-        }
-    } , [session])
-    return (
-        <div>
-        {session}
-        </div>
-    )
+        axios.get(process.env.REFRESH_URL)
+            .then((response) => {
+                setIsLoggedIn(true);
+            }).catch((error) => {
+                setIsLoggedIn(false);
+            }
+            );
+    }
+    , []);
+    if (isLoggedIn) {
+        navigate('/');
+    } else {
+        navigate('/login');
+    }
 }
+
+
+
