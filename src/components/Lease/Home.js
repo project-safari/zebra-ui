@@ -158,6 +158,12 @@ const drawerWidth = 256;
 
 
 export default function Home() {
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const isSmUp = useMediaQuery(theme.breakpoints.up('sm'));
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
 
   return (
     <ThemeProvider theme={theme}>

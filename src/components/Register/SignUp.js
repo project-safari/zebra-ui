@@ -14,9 +14,11 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { REGISTER_URL } from '../../constants/urls';
 import axios from 'axios';
-import { REGISTER_URL } from '../../url-constants';
 const theme = createTheme();
+
+
 
 export default function SignUp() {
   const handleSubmit = async(event) => {

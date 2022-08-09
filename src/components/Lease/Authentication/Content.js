@@ -11,7 +11,6 @@ import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import RefreshIcon from '@mui/icons-material/Refresh';
-import InventoryTable from '../../Table/Table';
 import ResourceDatagrid from '../../Datagrid/ResourceDatagrid';
 import ResourceAreaChart from '../../Charts/AreaChart';
 import ResourceComposedChart from '../../Charts/ComposedChart';

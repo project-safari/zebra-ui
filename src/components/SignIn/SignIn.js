@@ -14,9 +14,9 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { AuthContext } from '../../context/AuthContext';
+import { LOGIN_URL } from '../../constants/urls';
 import axios from 'axios';
 
-require('dotenv').config();
 
 const theme = createTheme();
 
@@ -27,7 +27,7 @@ export default function SignIn() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     try{ 
-      axios.post(process.env.LOGIN_URL, {
+      axios.post(LOGIN_URL, {
         user: data.get('email'),
         password: data.get('password'),
       })

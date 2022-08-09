@@ -83,7 +83,7 @@ const labels = [
     'orange',
 ];
 
-export default function PaymentForm() {
+export default function LeaseForm() {
     const theme = useTheme();
     const [type, setType] = React.useState('');
     const [inputlabel, setInputLabel] = React.useState([]);
@@ -198,6 +198,5 @@ export default function PaymentForm() {
         </Grid>
       </Grid>
     </React.Fragment>
-  );v
+  );
 }
-Ri

@@ -13,7 +13,7 @@ import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AddressForm from './AddressForm';
-import PaymentForm from './PaymentForm';
+import LeaseForm from './LeaseForm';
 import Review from './Review';
 
 
@@ -24,7 +24,7 @@ function getStepContent(step) {
     case 0:
       return <AddressForm />;
     case 1:
-      return <PaymentForm />;
+      return <LeaseForm />;
     case 2:
       return <Review />;
     default:

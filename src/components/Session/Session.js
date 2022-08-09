@@ -5,15 +5,15 @@ import React from 'react';
 import { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { REFRESH_URL } from '../../constants/urls';
 
-require('dotenv').config();
 
 export default function Session() {
     const navigate = useNavigate();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
-        axios.get(process.env.REFRESH_URL)
+        axios.get(REFRESH_URL)
             .then((response) => {
                 setIsLoggedIn(true);
             }).catch((error) => {
