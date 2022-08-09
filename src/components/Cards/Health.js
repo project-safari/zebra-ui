@@ -6,7 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import ResourceComposedChart from '../Charts/ComposedChart';
-import { maxWidth } from '@mui/system';
+
 const card = (
     <React.Fragment>
       <CardContent>
