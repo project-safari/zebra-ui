@@ -1,20 +1,20 @@
-import React from 'react';
+import * as React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-import Navigator from './Navigator';
-import Content from './Authentication/Content';
-import Header from './Header';
+import Navigator from '../Navigator';
+import Content from './Content';
+import Header from '../Header';
 
 
 let theme = createTheme({
   palette: {
     primary: {
       light: '#63ccff',
-      main: '#015073',
+      main: '#009be5',
       dark: '#006db3',
     },
   },
@@ -48,7 +48,7 @@ theme = {
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          backgroundColor: '#015073',
+          backgroundColor: '#081627',
         },
       },
     },
@@ -155,9 +155,13 @@ theme = {
 
 const drawerWidth = 256;
 
-
-
 export default function Home() {
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const isSmUp = useMediaQuery(theme.breakpoints.up('sm'));
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
 
   return (
     <ThemeProvider theme={theme}>

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Link from '@mui/material/Link';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
@@ -86,7 +86,7 @@ export default function Navigator(props) {
           </ListItem>
         </Link>
         {categories.map(({ id, children }) => (
-          <Box key={id} sx={{ bgcolor: '#101F33' }}>
+          <Box key={id} sx={{ bgcolor: '#015073' }}>
             <ListItem sx={{ py: 2, px: 3 }}>
               <ListItemText sx={{ color: '#fff' }}>{id}</ListItemText>
             </ListItem>

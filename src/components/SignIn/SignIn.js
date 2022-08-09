@@ -15,10 +15,10 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { AuthContext } from '../../context/AuthContext';
 import axios from 'axios';
-import { LOGIN_URL } from '../../url-constants';
+
+require('dotenv').config();
 
 const theme = createTheme();
-
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ export default function SignIn() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     try{ 
-      axios.post(LOGIN_URL, {
+      axios.post(process.env.LOGIN_URL, {
         user: data.get('email'),
         password: data.get('password'),
       })
