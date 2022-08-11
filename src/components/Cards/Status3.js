@@ -10,27 +10,26 @@ import Collapse from '@mui/material/Collapse';
 import ResourceDatagrid from '../Datagrid/ResourceDatagrid';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import ResourceComposedChart from '../Charts/ComposedChart';
+import PieChart from '../Charts/PieChart';
 const card = (
     <React.Fragment>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Zebra Setup Critical Faults
+          Systems in high priority
         </Typography>
         <Typography variant="h5" component="div">
-            15 
+            45
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          Systems are experiencing critical faults and need attention.
+          Resources
         </Typography>
-        <ResourceComposedChart />
+        <PieChart />
       </CardContent>
       <CardActions>
         <Button size="small">More Details</Button>
       </CardActions>
     </React.Fragment>
   );
-  
   const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
     return <IconButton {...other} />;
@@ -42,14 +41,15 @@ const card = (
     }),
   }));
 
-  export default function Health() {
+  
+  export default function StatusThird() {
     const [expanded, setExpanded] = React.useState(false);
 
     const handleExpandClick = () => {
       setExpanded(!expanded);
     };
     return (
-      <Box sx={{ minWidth: 275, maxWidth: 750 }}>
+      <Box sx={{ minWidth: 275, maxWidth: 450 }}>
         <Card variant="outlined">
           {card}
             <CardActions disableSpacing>

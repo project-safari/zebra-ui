@@ -48,7 +48,7 @@ const data = [
   
   export default function ResourceComposedChart () {
          return (                     
-            <ComposedChart width={700} height={250} data={data}>
+            <ComposedChart width={650} height={250} data={data}>
                 <XAxis dataKey="name" />
                 <YAxis />
                 <Tooltip />

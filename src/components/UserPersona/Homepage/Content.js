@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,15 +10,6 @@ import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import RefreshIcon from '@mui/icons-material/Refresh';
-import ResourceDatagrid from '../../Datagrid/ResourceDatagrid';
-import ResourceAreaChart from '../../Charts/AreaChart';
-import ResourceComposedChart from '../../Charts/ComposedChart';
-import Available from '../../Cards/Available';
-import Health from '../../Cards/Health';
-import Status from '../../Cards/Status'
-import StatusSecond from '../../Cards/Status2'
-import StatusThird from '../../Cards/Status3'
-import ExpandCard from '../../Cards/ExpandCard';
 
 export default function Content() {
   return (
@@ -30,28 +20,6 @@ export default function Content() {
         elevation={0}
         sx={{ borderBottom: '1px solid rgba(0, 0, 0, 0.12)' }}
       >
-      <Grid container spacing={3}  justifyContent="space-between">
-        <Grid item>
-          <Status />
-        </Grid>
-        <Grid item>
-          <StatusSecond />
-        </Grid>
-        <Grid item>
-          <StatusThird />
-        </Grid>
-      </Grid>
-      <Grid container spacing={2}  justifyContent="space-between">
-        <Grid item>
-          <Available />
-        </Grid>
-        <Grid item xs>
-          <Health />
-        </Grid>
-      </Grid>
-
-
-
         <Toolbar>
           <Grid container spacing={2} alignItems="center">
             <Grid item>
@@ -60,7 +28,7 @@ export default function Content() {
             <Grid item xs>
               <TextField
                 fullWidth
-                placeholder="Search by resource type, state, creation, or availability"
+                placeholder="Search"
                 InputProps={{
                   disableUnderline: true,
                   sx: { fontSize: 'default' },
@@ -70,7 +38,7 @@ export default function Content() {
             </Grid>
             <Grid item>
               <Button variant="contained" sx={{ mr: 1 }}>
-                Add Resource
+                Add Lease
               </Button>
               <Tooltip title="Reload">
                 <IconButton>
@@ -81,11 +49,9 @@ export default function Content() {
           </Grid>
         </Toolbar>
       </AppBar>
-      <Grid container spacing={2}>
-        <Grid item xs>
-          <ResourceDatagrid />
-        </Grid>
-      </Grid>
+      <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center">
+        You have no active lease requests pending
+      </Typography>
     </Paper>
   );
 }

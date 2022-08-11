@@ -8,6 +8,7 @@ import SignUp from './components/Register/SignUp';
 import SignIn from './components/SignIn/SignIn';
 import Home from './components/Lease/Home';
 import LeaseHome from './components/Lease/LeaseOffice/Home';
+import UserHome from './components/UserPersona/Home';
 import ResourceDatagrid from './components/Datagrid/ResourceDatagrid';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/login" element={<SignIn />} />
         <Route path="/register" element={<SignUp />} />
         <Route path="/" element={<Home />} />
+        <Route path="/home" element={<UserHome />} />
         <Route path="/leasing" element={<LeaseHome />} />
         <Route path='/datagrid' element={<ResourceDatagrid/>} />
       </Routes>
