@@ -24,8 +24,8 @@ export default function App() {
       <Routes>
         <Route path="/login" element={<SignIn />} />
         <Route path="/register" element={<SignUp />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<UserHome />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<UserHome />} />
         <Route path="/leasing" element={<LeaseHome />} />
         <Route path='/datagrid' element={<ResourceDatagrid/>} />
       </Routes>
