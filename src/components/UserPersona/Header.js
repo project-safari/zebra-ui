@@ -42,13 +42,6 @@ function Header(props) {
 
   const [alertOpen, setAlertOpen] = React.useState(false);
 
-  // responsive sidebar uses menu icon to toggle sidebar
-    const [sidebarOpen, setSidebarOpen] = React.useState(false);   
-    const onMenuIconClick = () => {
-        setSidebarOpen(!sidebarOpen);
-    }
-
-
 
   return (
     <React.Fragment>
@@ -209,11 +202,11 @@ function Header(props) {
       <AppBar component="div" position="static" elevation={0} sx={{ zIndex: 0 }}>
         <Tabs value={0} textColor="inherit">
           <Tab label="Home" 
-            onClick={() => navigate('/home')} />
+            onClick={() => navigate('/')} />
           <Tab label="Templates" 
             onClick={() => navigate('/templates')} />
           <Tab label="Create Lease" 
-            onClick={() => navigate('/templates')} />
+            onClick={() => navigate('/lease')} />
         </Tabs>
       </AppBar>
     </React.Fragment>

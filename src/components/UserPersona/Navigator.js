@@ -18,7 +18,10 @@ import SettingsInputComponentIcon from '@mui/icons-material/SettingsInputCompone
 import TimerIcon from '@mui/icons-material/Timer';
 import SettingsIcon from '@mui/icons-material/Settings';
 import PhonelinkSetupIcon from '@mui/icons-material/PhonelinkSetup';
+import CloudCircleIcon from '@mui/icons-material/CloudCircle';
 import { useNavigate } from 'react-router-dom';
+
+
 
 const categories = [
   {
@@ -63,8 +66,11 @@ export default function Navigator(props) {
   return (
     <Drawer variant="permanent" {...other}>
       <List disablePadding>
-        <ListItem sx={{ ...item, ...itemCategory, fontSize: 22, color: '#fff' }}>
-          Zebra User
+        <ListItem sx={{ ...item, ...itemCategory, fontSize: 30, color: '#fff', fontFamily: '-apple-system', fontWeight: 'bold'  }}>
+          <ListItemIcon>
+            <CloudCircleIcon />
+          </ListItemIcon>
+          Zebra
         </ListItem>
         <Link href="/" onClick={handleClick} underline="none" color="inherit" >
           <ListItem sx={{ ...item, ...itemCategory }} >
