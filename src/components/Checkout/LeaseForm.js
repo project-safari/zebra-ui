@@ -162,6 +162,7 @@ export default function LeaseForm() {
         </Box>
         <Grid item xs={12}>
           <TextField
+            required
             id="address2"
             name="address2"
             label="Project Name"
@@ -172,10 +173,9 @@ export default function LeaseForm() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            required
             id="city"
             name="city"
-            label="Text Field"
+            label="First Name"
             fullWidth
             autoComplete="shipping address-level2"
             variant="standard"
@@ -185,7 +185,7 @@ export default function LeaseForm() {
           <TextField
             id="state"
             name="state"
-            label="Text Field"
+            label="Last Name"
             fullWidth
             variant="standard"
           />

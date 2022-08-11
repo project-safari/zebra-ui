@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SecurityIcon from '@mui/icons-material/Security';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
@@ -205,6 +205,13 @@ export default function ResourceDatagrid() {
         rowsPerPageOptions={[10]}
         checkboxSelection
         disableSelectionOnClick
+        components={{ Toolbar: GridToolbar }}
+        componentsProps={{
+            toolbar: {
+                showQuickFilter: true,
+                quickFilterProps: { debounceMs: 500 },
+            },
+        }}
       />
     </Box>
   );
