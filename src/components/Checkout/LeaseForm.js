@@ -8,11 +8,13 @@ import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { useTheme } from '@mui/material/styles';
 import ListItemText from '@mui/material/ListItemText';
+import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import { Select, MenuItem } from '@mui/material';
 import Chip from '@mui/material/Chip';
 import Checkbox from '@mui/material/Checkbox';
 import Slider from '@mui/material/Slider';
+import InputBase from '@mui/material/InputBase';
 
 const marks = [
     {
@@ -52,6 +54,40 @@ const MenuProps = {
     },
 };
 
+const BootstrapInput = styled(InputBase)(({ theme }) => ({
+  'label + &': {
+    marginTop: theme.spacing(3),
+  },
+  '& .MuiInputBase-input': {
+    borderRadius: 4,
+    position: 'relative',
+    backgroundColor: theme.palette.background.paper,
+    border: '1px solid #ced4da',
+    fontSize: 16,
+    padding: '10px 26px 10px 12px',
+    transition: theme.transitions.create(['border-color', 'box-shadow']),
+    // Use the system font instead of the default Roboto font.
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+    '&:focus': {
+      borderRadius: 4,
+      borderColor: '#80bdff',
+      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+    },
+  },
+}));
+
+
 function getStyles(label, inputLabel, theme) {
     return {
         fontWeight:
@@ -84,6 +120,10 @@ const labels = [
 ];
 
 export default function LeaseForm() {
+  const [template, setTemplate] = React.useState('');
+  const handleChange = (event) => {
+    setTemplate(event.target.value);
+  };
     const theme = useTheme();
     const [type, setType] = React.useState('');
     const [inputlabel, setInputLabel] = React.useState([]);
@@ -99,9 +139,28 @@ export default function LeaseForm() {
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        Select a Resource Type
+        Search for a Template Lease Request
       </Typography>
       <Grid container spacing={3}>
+
+        <FormControl sx={{ m: 3, minWidth: 800 }} variant="standard">
+        <InputLabel id="demo-customized-select-label">Templates</InputLabel>
+        <Select
+          labelId="demo-customized-select-label"
+          id="demo-customized-select"
+          value={template}
+          onChange={handleChange}
+          input={<BootstrapInput />}
+        >
+          <MenuItem value="">
+            <em>Custom Lease Request</em>
+          </MenuItem>
+          <MenuItem value={10}>3 Node nd-cluster</MenuItem>
+          <MenuItem value={20}>4 Node nd-cluster</MenuItem>
+          <MenuItem value={30}>2 Node nd-cluster</MenuItem>
+          <MenuItem value={40}>3 Node nd-cluster & APIC</MenuItem>
+        </Select>
+      </FormControl>
         <FormControl variant="standard" sx={{ m: 3, minWidth: 800 }}>
         <InputLabel id='resource-type'>Type</InputLabel>
         <Select 
@@ -119,11 +178,8 @@ export default function LeaseForm() {
             <MenuItem value="Other">Other</MenuItem>
         </Select>
         </FormControl>
-        <Typography variant="h6" gutterBottom sx={{ m: 3 }}>
-        Select Resource Labels
-        </Typography>
         <FormControl variant="standard" sx={{ m: 3, minWidth: 800 }}>
-        <InputLabel id='resource-label'>Label</InputLabel>
+        <InputLabel id='resource-label'> Labels </InputLabel>
         <Select
             labelId='resource-label'
             id='resource-label-select'
@@ -148,7 +204,7 @@ export default function LeaseForm() {
         </Select>
         </FormControl>
         <Typography variant="h6" gutterBottom sx={{ m:3 }}> 
-        Select the count of resources to create
+        How many do you want to reserve?
         </Typography>
         <Box sx={{ m: 3, minWidth: 800 }}>
         
@@ -160,6 +216,12 @@ export default function LeaseForm() {
                 valueLabelDisplay="on"
             />
         </Box>
+        <Grid item xs={12}>
+          <FormControlLabel
+            control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
+            label="Use this request as a template for future reservations"
+          />
+        </Grid>
         <Grid item xs={12}>
           <TextField
             required
@@ -188,12 +250,6 @@ export default function LeaseForm() {
             label="Last Name"
             fullWidth
             variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <FormControlLabel
-            control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
-            label="Use this request as a template for future reservations"
           />
         </Grid>
       </Grid>
