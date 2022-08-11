@@ -12,17 +12,17 @@ import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import AddressForm from './AddressForm';
+import TemplateForm from './TemplateForm';
 import LeaseForm from './LeaseForm';
 import Review from './Review';
 
 
-const steps = ['Templates', 'Lease Request', 'Review your order'];
+const steps = ['Template or Custom', 'Lease Request', 'Review your order'];
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <AddressForm />;
+      return <TemplateForm />;
     case 1:
       return <LeaseForm />;
     case 2:
@@ -65,12 +65,10 @@ export default function Checkout() {
             {activeStep === steps.length ? (
               <React.Fragment>
                 <Typography variant="h5" gutterBottom>
-                  Thank you for your order.
+                  Awesome! Lease Request Worked
                 </Typography>
                 <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order
-                  confirmation, and will send you an update when your order has
-                  shipped.
+                  You will recieve an email confirmation shortly. Thank you for using Zebra Lease Request. You are Third in queue.
                 </Typography>
               </React.Fragment>
             ) : (

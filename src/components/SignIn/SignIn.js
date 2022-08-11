@@ -28,7 +28,7 @@ export default function SignIn() {
     const data = new FormData(event.currentTarget);
     try{ 
       axios.post(LOGIN_URL, {
-        user: data.get('email'),
+        email: data.get('email'),
         password: data.get('password'),
       })
       .then((response) => {

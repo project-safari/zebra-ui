@@ -24,16 +24,11 @@ import Tooltip from '@mui/material/Tooltip';
 import Divider  from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
-import LeaseHome from '../Lease/LeaseOffice/Home';
 
 
 const lightColor = 'rgba(255, 255, 255, 0.7)';
 
 function Header(props) {
-  const [value, setValue] = React.useState(0);
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
   const { onDrawerToggle } = props;
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -181,7 +176,7 @@ function Header(props) {
           <Grid container alignItems="center" spacing={1}>
             <Grid item xs>
               <Typography color="inherit" variant="h5" component="h1">
-                Project Build
+                Create a Lease Request
               </Typography>
             </Grid>
             <Grid item>
@@ -205,9 +200,9 @@ function Header(props) {
         </Toolbar>
       </AppBar>
       <AppBar component="div" position="static" elevation={0} sx={{ zIndex: 0 }}>
-        <Tabs value={0} textColor="inherit">
+        <Tabs value={2} textColor="inherit">
           <Tab label="Home" 
-            onClick={() => navigate('/')}/>
+            onClick={() => navigate('/')} />
           <Tab label="Templates" 
             onClick={() => navigate('/templates')} />
           <Tab label="Create Lease" 
