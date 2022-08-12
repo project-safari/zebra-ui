@@ -15,6 +15,10 @@ import Chip from '@mui/material/Chip';
 import Checkbox from '@mui/material/Checkbox';
 import Slider from '@mui/material/Slider';
 import InputBase from '@mui/material/InputBase';
+import { LEASE_URL } from '../../constants/urls';
+import axios from 'axios';
+import { TypeFlags } from 'typescript';
+
 
 const marks = [
     {
@@ -121,6 +125,9 @@ const labels = [
 
 export default function LeaseForm() {
   const [template, setTemplate] = React.useState('');
+  const [label, setLabels] = React.useState([]);
+  const [count, setCount] = React.useState(0);
+
   const handleChange = (event) => {
     setTemplate(event.target.value);
   };
@@ -134,124 +141,131 @@ export default function LeaseForm() {
         setInputLabel(
           typeof value === 'string' ? value.split(',') : value,
         );
+        setLabels(value);
       };
+  
+  const handleSubmit = async(event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    try{ 
+      axios.post(LEASE_URL, {
+        type: data.get('type'),
+        labels: data.get('labelid'),
+        count: data.get('count'),
+      })
+      .then((response) => {
+        navigate('/');
+        console.log(response);
+      });
+    } catch (e) {
+      console.log(e);
 
+    };
+  };
+
+  
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
         Search for a Template Lease Request
       </Typography>
       <Grid container spacing={3}>
-
-        <FormControl sx={{ m: 3, minWidth: 800 }} variant="standard">
-        <InputLabel id="demo-customized-select-label">Templates</InputLabel>
-        <Select
-          labelId="demo-customized-select-label"
-          id="demo-customized-select"
-          value={template}
-          onChange={handleChange}
-          input={<BootstrapInput />}
-        >
-          <MenuItem value="">
-            <em>Custom Lease Request</em>
-          </MenuItem>
-          <MenuItem value={10}>3 Node nd-cluster</MenuItem>
-          <MenuItem value={20}>4 Node nd-cluster</MenuItem>
-          <MenuItem value={30}>2 Node nd-cluster</MenuItem>
-          <MenuItem value={40}>3 Node nd-cluster & APIC</MenuItem>
-        </Select>
-      </FormControl>
-        <FormControl variant="standard" sx={{ m: 3, minWidth: 800 }}>
-        <InputLabel id='resource-type'>Type</InputLabel>
-        <Select 
-            labelId='resource-type' 
-            id='resource-type-select'
-            value={type}
-            onChange={(e) => setType(e.target.value)}
-            label="Type"
-        >
-            <MenuItem value="Datacenter">Datacenter</MenuItem>
-            <MenuItem value="Server">Server</MenuItem>
-            <MenuItem value="Storage">Storage</MenuItem>
-            <MenuItem value="Network">Network</MenuItem>
-            <MenuItem value="Software">Software</MenuItem>
-            <MenuItem value="Other">Other</MenuItem>
-        </Select>
-        </FormControl>
-        <FormControl variant="standard" sx={{ m: 3, minWidth: 800 }}>
-        <InputLabel id='resource-label'> Labels </InputLabel>
-        <Select
-            labelId='resource-label'
-            id='resource-label-select'
-            multiple
-            value={inputlabel}
-            onChange={handleLabelChange}
-            input={<OutlinedInput id='select-multiple-chip' label='Chip' />}
-            renderValue={(selected) => (
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-              {selected.map((value) => (
-                <Chip key={value} label={value} />
+        <Box component="form" onSubmit={{handleSubmit}} noValidate>
+          <FormControl variant="standard" sx={{ m: 3, minWidth: 800 }}>
+          <InputLabel id='resource-type'>Type</InputLabel>
+          <Select 
+              labelId='resource-type' 
+              id='type'
+              value={type}
+              onChange={(e) => setType(e.target.value)}
+              label="Type"
+          >
+              <MenuItem value="Datacenter">Datacenter</MenuItem>
+              <MenuItem value="Server">Server</MenuItem>
+              <MenuItem value="Storage">Storage</MenuItem>
+              <MenuItem value="Network">Network</MenuItem>
+              <MenuItem value="Software">Software</MenuItem>
+              <MenuItem value="Other">Other</MenuItem>
+          </Select>
+          </FormControl>
+          <FormControl variant="standard" sx={{ m: 3, minWidth: 800 }}>
+          <InputLabel id='resource-label'> Labels </InputLabel>
+          <Select
+              labelId='resource-label'
+              id='labels'
+              multiple
+              value={inputlabel}
+              onChange={handleLabelChange}
+              input={<OutlinedInput id='select-multiple-chip' label='Chip' />}
+              renderValue={(selected) => (
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                {selected.map((value) => (
+                  <Chip key={value} label={value} />
+                ))}
+              </Box>
+            )}
+              MenuProps={MenuProps}
+          >
+              {labels.map((label) => (
+              <MenuItem key={label} value={label} style={getStyles(label, inputlabel, theme)}>
+                  {label}
+              </MenuItem>
               ))}
-            </Box>
-          )}
-            MenuProps={MenuProps}
-        >
-            {labels.map((label) => (
-            <MenuItem key={label} value={label} style={getStyles(label, inputlabel, theme)}>
-                {label}
-            </MenuItem>
-            ))}
-        </Select>
-        </FormControl>
-        <Typography variant="h6" gutterBottom sx={{ m:3 }}> 
-        How many do you want to reserve?
-        </Typography>
-        <Box sx={{ m: 3, minWidth: 800 }}>
-        
-            <Slider
-                aria-label="Always visible"
-                defaultValue={1}
-                getAriaValueText={valuetext}
-                marks={marks}
-                valueLabelDisplay="on"
+          </Select>
+          </FormControl>
+          <Typography variant="h6" gutterBottom sx={{ m:3 }}> 
+          How many do you want to reserve?
+          </Typography>
+          <Box sx={{ m: 3, minWidth: 800 }}>
+          
+              <Slider
+                  aria-label="Always visible"
+                  id='count'
+                  defaultValue={1}
+                  getAriaValueText={valuetext}
+                  onChange={(e, value) => setCount(value)}
+                  marks={marks}
+                  valueLabelDisplay="on"
+              />
+          </Box>
+          </Box>
+
+          <Grid item xs={12}>
+            <FormControlLabel
+              control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
+              label="Use this request as a template for future reservations"
             />
-        </Box>
-        <Grid item xs={12}>
-          <FormControlLabel
-            control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
-            label="Use this request as a template for future reservations"
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-            required
-            id="address2"
-            name="address2"
-            label="Project Name"
-            fullWidth
-            autoComplete="shipping address-line2"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            id="city"
-            name="city"
-            label="First Name"
-            fullWidth
-            autoComplete="shipping address-level2"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            id="state"
-            name="state"
-            label="Last Name"
-            fullWidth
-            variant="standard"
-          />
-        </Grid>
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              required
+              id="address2"
+              name="address2"
+              label="Project Name"
+              fullWidth
+              autoComplete="shipping address-line2"
+              variant="standard"
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="city"
+              name="city"
+              label="First Name"
+              fullWidth
+              autoComplete="shipping address-level2"
+              variant="standard"
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="state"
+              name="state"
+              label="Last Name"
+              fullWidth
+              variant="standard"
+            />
+          </Grid>
       </Grid>
     </React.Fragment>
   );
