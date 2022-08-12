@@ -33,7 +33,7 @@ const categories = [
         active: true,
       },
       { id: 'Inventory', icon: <DnsRoundedIcon /> },
-      { id: 'Leasing', icon: <PermMediaOutlinedIcon /> },
+      { id: 'Lease', icon: <PermMediaOutlinedIcon /> },
     ],
   },
 ];
