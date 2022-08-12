@@ -10,8 +10,21 @@ import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import RefreshIcon from '@mui/icons-material/Refresh';
+import Active from '../../Cards/Active';
+import ResourceDatagrid from '../../Datagrid/ResourceDatagrid';
+import BasicModal from '../../Modal/Modal';
+import Template from '../../Cards/Template';
 
 export default function Content() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  }
+  const handleClose = () => {
+    setOpen(false);
+  }
+
   return (
     <Paper sx={{ maxWidth: 1400, margin: 'auto', overflow: 'hidden' }}>
       <AppBar
@@ -28,7 +41,7 @@ export default function Content() {
             <Grid item xs>
               <TextField
                 fullWidth
-                placeholder="Search"
+                placeholder="Search for templates"
                 InputProps={{
                   disableUnderline: true,
                   sx: { fontSize: 'default' },
@@ -37,8 +50,8 @@ export default function Content() {
               />
             </Grid>
             <Grid item>
-              <Button variant="contained" sx={{ mr: 1 }}>
-                Add Lease
+              <Button variant="contained" sx={{ mr: 1 }} onClick={handleOpen}>
+                Add Lease Template
               </Button>
               <Tooltip title="Reload">
                 <IconButton>
@@ -50,8 +63,36 @@ export default function Content() {
         </Toolbar>
       </AppBar>
       <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center">
-        You have no active lease requests pending
+        You have no active lease requests pending.
       </Typography>
+      <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center">
+        Start a Lease Request from your saved templates below, or create a new lease request.
+      </Typography>
+      <Grid container spacing={4}  >
+        <Grid item>
+          <Active />
+        </Grid>
+        <Grid item>
+          <Active />
+        </Grid>
+        <Grid item>
+          <Active />
+        </Grid>
+        <Grid item>
+          <Active />
+        </Grid>
+        <Grid item>
+          <Active />
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Grid item xs>
+        <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center">
+          This is all of the Inventory managed by your organization.
+        </Typography>
+          <ResourceDatagrid />
+        </Grid>
+      </Grid>
     </Paper>
   );
 }

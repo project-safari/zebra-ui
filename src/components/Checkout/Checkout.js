@@ -45,8 +45,6 @@ export default function Checkout() {
   };
 
 
-
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
