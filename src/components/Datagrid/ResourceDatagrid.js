@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -12,6 +12,7 @@ import { red, green } from '@mui/material/colors';
 import Chip from '@mui/material/Chip';
 import renderCellExpand from '../../utils/renderCellExpand';
 import { RESOURCE_URL } from '../../constants/urls';
+import AuthContext from '../../context/AuthContext';
 import axios from 'axios';
 
 
@@ -94,6 +95,8 @@ export default function ResourceDatagrid() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [rows, setRows] = useState(null);
+    let {authTokens} = useContext(AuthContext);
+
 
     const deleteRow = React.useCallback(async (params) => {
         const { rowData } = params;
@@ -173,7 +176,12 @@ export default function ResourceDatagrid() {
     const getData = async () => {
         try {
             const data = await axios.get(
-                process.env.RESOURCE_URL
+                RESOURCE_URL, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+                    }
+                }
             );
             setData(data.data.Datacenter);
             console.log(data.data.Datacenter);

@@ -13,15 +13,15 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { AuthContext } from '../../context/AuthContext';
 import { LOGIN_URL } from '../../constants/urls';
 import axios from 'axios';
-
+import AuthContext from '../../context/AuthContext';
 
 const theme = createTheme();
 
 export default function SignIn() {
   const navigate = useNavigate();
+  let {loginUser} = useContext(AuthContext)
 
   const handleSubmit = async(event) => {
     event.preventDefault();
@@ -59,7 +59,7 @@ export default function SignIn() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={loginUser} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
