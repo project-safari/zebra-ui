@@ -17,18 +17,23 @@ import Link from '@mui/material/Link';
 import Session from './components/Session/Session';
 import axios from 'axios';
 import PrivateRoute from './utils/PrivateRoute';
+import { AuthProvider } from './context/AuthContext';
 
 export default function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/login" element={<SignIn />} />
-        <Route path="/register" element={<SignUp />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/" element={<UserHome />} />
-        <Route path="/lease" element={<LeaseHome />} />
-        <Route path='/datagrid' element={<ResourceDatagrid/>} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route element={<PrivateRoute />}/>
+            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<UserHome />} />
+            <Route path="/lease" element={<LeaseHome />} />
+            <Route path='/datagrid' element={<ResourceDatagrid/>} />
+          <Route />
+          <Route path="/login" element={<SignIn />} />
+          <Route path="/register" element={<SignUp />} />
+        </Routes>
+      </AuthProvider>
     </Router>
   );
   }
