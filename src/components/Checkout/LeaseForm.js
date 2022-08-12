@@ -16,6 +16,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Slider from '@mui/material/Slider';
 import InputBase from '@mui/material/InputBase';
 import { LEASE_URL } from '../../constants/urls';
+import  { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { TypeFlags } from 'typescript';
 
@@ -128,6 +129,7 @@ export default function LeaseForm() {
   const [label, setLabels] = React.useState([]);
   const [count, setCount] = React.useState(0);
 
+  const navigate = useNavigate();
   const handleChange = (event) => {
     setTemplate(event.target.value);
   };
