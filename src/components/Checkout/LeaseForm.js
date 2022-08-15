@@ -5,6 +5,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
+import Button from '@mui/material/Button';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { useTheme } from '@mui/material/styles';
 import ListItemText from '@mui/material/ListItemText';
@@ -158,43 +159,43 @@ export default function LeaseForm() {
           typeof value === 'string' ? value.split(',') : value,
         );
         setLabels(value);
+        console.log(value);
       };
-  
-  const handleSubmit = async(event) => {
+
+
+  const makeLease = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    try{ 
-      API.post(RESOURCE_URL + '/types', {
-        type: data.get('type'),
-        labels: data.get('labelid'),
-        count: data.get('count'),
+    try{
+      axios.post(RESOURCE_URL, {
+        type: type,
+        group: label,
+        count: count,
       })
       .then((response) => {
         navigate('/');
         console.log(response);
-      });
+      })
     } catch (e) {
       console.log(e);
+    }
+  }
 
-    };
-  };
-
-  
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
         Search for a Template Lease Request
       </Typography>
       <Grid container spacing={3}>
-        <Box component="form" onSubmit={handleSubmit} noValidate>
+        <Box component="form" onSubmit={makeLease} noValidate>
           <FormControl variant="standard" sx={{ m: 3, minWidth: 800 }}>
           <InputLabel id='resource-type'>Type</InputLabel>
           <Select 
-              labelId='resource-type' 
+              labelId='type' 
+              name='type'
               id='type'
               value={type}
               onChange={(e) => setType(e.target.value)}
-              label="Type"
+              label="type"
           >
               <MenuItem value="Datacenter">Datacenter</MenuItem>
               <MenuItem value="Server">Server</MenuItem>
@@ -207,7 +208,8 @@ export default function LeaseForm() {
           <FormControl variant="standard" sx={{ m: 3, minWidth: 800 }}>
           <InputLabel id='resource-label'> Labels </InputLabel>
           <Select
-              labelId='resource-label'
+              labelId='labels'
+              name='labels'
               id='labels'
               multiple
               value={inputlabel}
@@ -236,14 +238,27 @@ export default function LeaseForm() {
           
               <Slider
                   aria-label="Always visible"
+                  name='count'
                   id='count'
                   defaultValue={1}
                   getAriaValueText={valuetext}
-                  onChange={(e, value) => setCount(value)}
+                  onChange={(e, value) => {
+                    setCount(value)
+                    console.log(value)
+                    }
+                  }
                   marks={marks}
                   valueLabelDisplay="on"
               />
           </Box>
+          <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Submit
+            </Button>
           </Box>
 
           <Grid item xs={12}>
@@ -260,7 +275,7 @@ export default function LeaseForm() {
                 required
                 id="template"
                 name="template"
-                label="Name your new template"
+                label="Name your Template"
                 fullWidth
                 autoComplete="template"
                 variant="outlined"
@@ -297,6 +312,7 @@ export default function LeaseForm() {
               />
             </Grid>
           ) : null}
+
       </Grid>
     </React.Fragment>
   );

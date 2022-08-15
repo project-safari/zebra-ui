@@ -16,8 +16,9 @@ import TemplateForm from './TemplateForm';
 import LeaseForm from './LeaseForm';
 import Review from './Review';
 import axios from 'axios';
+import { RESOURCE_URL } from '../../constants/urls';
 
-const steps = ['Template or Custom', 'Lease Request', 'Review your order'];
+const steps = ['Template or Custom', 'Lease Request', 'Review your request'];
 
 function getStepContent(step) {
   switch (step) {
@@ -43,6 +44,14 @@ export default function Checkout() {
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+
+  const submitLeaseRequest = () => {
+    axios.post(RESOURCE_URL, {
+      type: type,
+      group: group,
+      count: count,
+    });
+  }
 
 
   return (
@@ -86,7 +95,8 @@ export default function Checkout() {
                     onClick={handleNext}
                     sx={{ mt: 3, ml: 1 }}
                   >
-                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                    {activeStep === steps.length - 1 ? 'Place request' : 'Next'}
+                    {activeStep === steps.length - 1 }
                   </Button>
                 </Box>
               </React.Fragment>
