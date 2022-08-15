@@ -19,7 +19,7 @@ import { LEASE_URL } from '../../constants/urls';
 import  { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { TypeFlags } from 'typescript';
-
+import API from '../../api/Api';
 
 const marks = [
     {
@@ -150,7 +150,7 @@ export default function LeaseForm() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     try{ 
-      axios.post(LEASE_URL, {
+      API.post(LEASE_URL, {
         type: data.get('type'),
         labels: data.get('labelid'),
         count: data.get('count'),
@@ -172,7 +172,7 @@ export default function LeaseForm() {
         Search for a Template Lease Request
       </Typography>
       <Grid container spacing={3}>
-        <Box component="form" onSubmit={{handleSubmit}} noValidate>
+        <Box component="form" onSubmit={handleSubmit} noValidate>
           <FormControl variant="standard" sx={{ m: 3, minWidth: 800 }}>
           <InputLabel id='resource-type'>Type</InputLabel>
           <Select 
