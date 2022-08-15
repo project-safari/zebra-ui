@@ -93,6 +93,7 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
 }));
 
 
+
 function getStyles(label, inputLabel, theme) {
     return {
         fontWeight:
@@ -126,14 +127,26 @@ const labels = [
 
 export default function LeaseForm() {
   const [template, setTemplate] = React.useState('');
+  const [name, setName] = React.useState('');
+  const [description, setDescription] = React.useState('');
+
   const [label, setLabels] = React.useState([]);
   const [count, setCount] = React.useState(0);
   const [isTrue, setIsTrue] = React.useState(false);
+
+
 
   const navigate = useNavigate();
   const handleChange = (event) => {
     setTemplate(event.target.value);
   };
+  const handleChangeName = (event) => {
+    setName(event.target.value);
+  }
+  const handleChangeDescription = (event) => {
+    setDescription(event.target.value);
+  }
+
     const theme = useTheme();
     const [type, setType] = React.useState('');
     const [inputlabel, setInputLabel] = React.useState([]);
@@ -241,36 +254,49 @@ export default function LeaseForm() {
               label="Use this request as a template for future reservations"
             />
           </Grid>
-          <Grid item xs={12}>
-            <TextField
-              required
-              id="address2"
-              name="address2"
-              label="Project Name"
-              fullWidth
-              autoComplete="shipping address-line2"
-              variant="standard"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              id="city"
-              name="city"
-              label="First Name"
-              fullWidth
-              autoComplete="shipping address-level2"
-              variant="standard"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              id="state"
-              name="state"
-              label="Last Name"
-              fullWidth
-              variant="standard"
-            />
-          </Grid>
+          {isTrue ? (
+            <Grid item xs={12}>
+              <TextField
+                required
+                id="template"
+                name="template"
+                label="Name your new template"
+                fullWidth
+                autoComplete="template"
+                variant="outlined"
+                value={template}
+                onChange={handleChange}
+              />
+            </Grid>
+          ) : null}
+          {isTrue ? (
+            <Grid item xs={12}>
+              <TextField
+                id='Name'
+                name='Name'
+                label='Name'
+                fullWidth
+                autoComplete='Name'
+                variant='outlined'
+                value={name}
+                onChange={handleChangeName}
+              />
+            </Grid>
+          ) : null}
+          {isTrue ? (
+            <Grid item xs={12}>
+              <TextField
+                id='Description'
+                name='Description'
+                label='Description'
+                fullWidth
+                autoComplete='Description'
+                variant='outlined'
+                value={description}
+                onChange={handleChangeDescription}
+              />
+            </Grid>
+          ) : null}
       </Grid>
     </React.Fragment>
   );
