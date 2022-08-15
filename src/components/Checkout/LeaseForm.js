@@ -15,7 +15,7 @@ import Chip from '@mui/material/Chip';
 import Checkbox from '@mui/material/Checkbox';
 import Slider from '@mui/material/Slider';
 import InputBase from '@mui/material/InputBase';
-import { LEASE_URL } from '../../constants/urls';
+import { LEASE_URL, RESOURCE_URL } from '../../constants/urls';
 import  { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { TypeFlags } from 'typescript';
@@ -128,6 +128,7 @@ export default function LeaseForm() {
   const [template, setTemplate] = React.useState('');
   const [label, setLabels] = React.useState([]);
   const [count, setCount] = React.useState(0);
+  const [isTrue, setIsTrue] = React.useState(false);
 
   const navigate = useNavigate();
   const handleChange = (event) => {
@@ -150,7 +151,7 @@ export default function LeaseForm() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     try{ 
-      API.post(LEASE_URL, {
+      API.post(RESOURCE_URL + '/types', {
         type: data.get('type'),
         labels: data.get('labelid'),
         count: data.get('count'),
@@ -234,7 +235,9 @@ export default function LeaseForm() {
 
           <Grid item xs={12}>
             <FormControlLabel
-              control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
+              control={<Checkbox color="secondary" name="saveAddress" value="yes" checked={isTrue} onClick={() => {
+              setIsTrue(!isTrue);
+              console.log('activated', isTrue) } } />}
               label="Use this request as a template for future reservations"
             />
           </Grid>
