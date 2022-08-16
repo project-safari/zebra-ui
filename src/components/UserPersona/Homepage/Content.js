@@ -12,6 +12,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import Active from '../../Cards/Active';
 import ResourceDatagrid from '../../Datagrid/ResourceDatagrid';
+import UserInventory from '../../Cards/UserInventory';
 import BasicModal from '../../Modal/Modal';
 import Template from '../../Cards/Template';
 
@@ -86,13 +87,11 @@ export default function Content() {
         </Grid>
       </Grid>
       <Grid container>
-        <Grid item xs>
-        <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center">
-          This is all of the Inventory managed by your organization.
-        </Typography>
-          <ResourceDatagrid />
+        <Grid item xs sx={{ p: 6 }}>
+          <UserInventory />
         </Grid>
       </Grid>
+
     </Paper>
   );
 }

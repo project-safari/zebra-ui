@@ -12,7 +12,7 @@ import { red, green } from '@mui/material/colors';
 import Chip from '@mui/material/Chip';
 import renderCellExpand from '../../utils/renderCellExpand';
 import { RESOURCE_URL } from '../../constants/urls';
-import AuthContext from '../../context/AuthContext';
+import API from '../../api/Api';
 import axios from 'axios';
 
 
@@ -46,7 +46,7 @@ const columns = [
             if (params.value === 'active') {
                 return <Chip variant='outlined' size='small' {...getChipProps(params)} />;
             } else if (params.value === 'inactive') {
-                return <span style={{ color: 'red' }}>{params.value}</span>;
+                return <Chip variant='outlined' size='small' {...getChipProps(params)} />;
             } else {
                 return <span>{params.value}</span>;
             }
@@ -95,7 +95,6 @@ export default function ResourceDatagrid() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [rows, setRows] = useState(null);
-    let {authTokens} = useContext(AuthContext);
 
 
     const deleteRow = React.useCallback(async (params) => {
@@ -175,13 +174,12 @@ export default function ResourceDatagrid() {
 
     const getData = async () => {
         try {
-            const data = await axios.get(
+            const data = await API.get(
                 RESOURCE_URL, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
-                    }
+                    params: {
+                        types: 'server',
                 }
+            }
             );
             setData(data.data.Datacenter);
             console.log(data.data.Datacenter);
