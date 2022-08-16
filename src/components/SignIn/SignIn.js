@@ -16,6 +16,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { LOGIN_URL } from '../../constants/urls';
 import axios from 'axios';
 import AuthContext from '../../context/AuthContext';
+import API from '../../api/Api';
 
 const theme = createTheme();
 
@@ -27,7 +28,7 @@ export default function SignIn() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     try{ 
-      axios.post(LOGIN_URL, {
+      API.post(LOGIN_URL, {
         email: data.get('email'),
         password: data.get('password'),
       })

@@ -130,6 +130,7 @@ export default function LeaseForm() {
   const [template, setTemplate] = React.useState('');
   const [name, setName] = React.useState('');
   const [description, setDescription] = React.useState('');
+  const [group, setGroup] = React.useState('');
 
   const [label, setLabels] = React.useState([]);
   const [count, setCount] = React.useState(0);
@@ -151,6 +152,9 @@ export default function LeaseForm() {
     const theme = useTheme();
     const [type, setType] = React.useState('');
     const [inputlabel, setInputLabel] = React.useState([]);
+    const [resourceName, setResourceName] = React.useState('');
+    const [resources, setResources] = React.useState([]);
+
     const handleLabelChange = (event) => {
         const {
           target: { value },
@@ -161,16 +165,28 @@ export default function LeaseForm() {
         setLabels(value);
         console.log(value);
       };
-
+ 
 
   const makeLease = (event) => {
     event.preventDefault();
     try{
-      axios.post(RESOURCE_URL, {
-        type: type,
-        group: label,
-        count: count,
-      })
+      API.post(RESOURCE_URL, {
+          Lease : [{
+            type: "Lease",
+            labels: {
+              "system.group": "leases"
+            },
+            status : {
+              usedBy: "ali@agrabah.com",
+            },
+            duration: "4h",
+            request: [{
+              type: "Server",
+              group: "global",
+              count: 3
+            }]
+          }]
+        })
       .then((response) => {
         navigate('/');
         console.log(response);

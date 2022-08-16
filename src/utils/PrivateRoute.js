@@ -1,3 +1,4 @@
+/*
 import { Outlet, Navigate } from 'react-router-dom'
 
 export default function PrivateRoute() {
@@ -14,3 +15,4 @@ export default function PrivateRoute() {
   
     return <Outlet />;
   }
+*/
