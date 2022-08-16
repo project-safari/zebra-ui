@@ -181,7 +181,7 @@ function Header(props) {
           <Grid container alignItems="center" spacing={1}>
             <Grid item xs>
               <Typography color="inherit" variant="h5" component="h1">
-                Welcome back, Nicholas!
+                Template Marketplace
               </Typography>
             </Grid>
             <Grid item>
@@ -205,7 +205,7 @@ function Header(props) {
         </Toolbar>
       </AppBar>
       <AppBar component="div" position="static" elevation={0} sx={{ zIndex: 0 }}>
-        <Tabs value={0} textColor="inherit">
+        <Tabs value={1} textColor="inherit">
           <Tab label="Home" 
             onClick={() => navigate('/')}/>
           <Tab label="Templates" 

@@ -3,60 +3,61 @@ import React from "react";
 
 const data = [
     {
-      "name": "Page A",
-      "uv": 4000,
-      "pv": 2400,
-      "amt": 2400
+        "name": "January",
+        "Resources under management": 40,
+        "Percent Resources Utilized": 24,
+      },
+    {
+      "name": "February",
+      "Resources under management": 40,
+      "Percent Resources Utilized": 24,
+      "amt": 24
     },
     {
-      "name": "Page B",
-      "uv": 3000,
-      "pv": 1398,
-      "amt": 2210
+      "name": "March",
+      "Resources under management": 30,
+      "Percent Resources Utilized": 13,
     },
     {
-      "name": "Page C",
-      "uv": 2000,
-      "pv": 9800,
-      "amt": 2290
+      "name": "April",
+      "Resources under management": 20,
+      "Percent Resources Utilized": 98,
+      "amt": 22
     },
     {
-      "name": "Page D",
-      "uv": 2780,
-      "pv": 3908,
-      "amt": 2000
+      "name": "May",
+      "Resources under management": 27,
+      "Percent Resources Utilized": 39,
     },
     {
-      "name": "Page E",
-      "uv": 1890,
-      "pv": 4800,
-      "amt": 2181
+      "name": "June",
+      "Resources under management": 18,
+      "Percent Resources Utilized": 48,
     },
     {
-      "name": "Page F",
-      "uv": 2390,
-      "pv": 3800,
-      "amt": 2500
+      "name": "July",
+      "Resources under management": 23,
+      "Percent Resources Utilized": 38,
     },
     {
-      "name": "Page G",
-      "uv": 3490,
-      "pv": 4300,
-      "amt": 2100
+      "name": "August",
+      "Resources under management": 34,
+      "Percent Resources Utilized": 43,
     }
   ]
+  
 
   export default function InventoryLineChart () {
     return (
-        <LineChart width={730} height={250} data={data}
-            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+        <LineChart width={850} height={250} data={data}
+            margin={{ top: 5, right: 5, left: 1, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="pv" stroke="#8884d8" />
-            <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+            <Line type="monotone" dataKey="Resources under management" stroke="#8884d8" />
+            <Line type="monotone" dataKey="Percent Resources Utilized" stroke="#82ca9d" />
         </LineChart>
     );
 }

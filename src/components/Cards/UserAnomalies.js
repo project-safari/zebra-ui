@@ -10,7 +10,7 @@ import Collapse from '@mui/material/Collapse';
 import ResourceDatagrid from '../Datagrid/ResourceDatagrid';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import InventoryLineChart from '../Charts/LineChart';
+import ResourceComposedChart from '../Charts/ComposedChart';
 import { Grid } from '@mui/material';
 
 
@@ -21,22 +21,35 @@ const card = (
         <Grid container spacing={0}>
             <Box sx={{ display: 'inline-block', width: '25%', p: 1.5,}}>
 
-                <Typography sx={{ fontSize: 20, fontWeight: 1000 }} color="#065073" gutterBottom >
-                Zebra System Management
+                <Typography sx={{ fontSize: 25, fontWeight: 1000 }} color="#065073" gutterBottom >
+                Zebra System Advisories
                 </Typography>
-                    <Typography sx={{ fontSize: 50, fontWeight: 1000 }} color="#599E05" gutterBottom >
-                    Healthy
+                    <Typography sx={{ fontSize: 100, fontWeight: 1000, ml: 3, mt: 0.5,}} color="#B63722" gutterBottom >
+                    4
                     </Typography>
-                <Typography sx={{ mr:2, }} color="text.secondary">
-                    For the past 6 months, you have a 75% hardware utilization rate for your inventory.
+                <Typography sx={{ mr:2 }} color="text.secondary">
+                    4 total advisories, 1 critical, 1 warning, 2 informational.
                 </Typography>
             </Box>
-            <Box sx={{ display: 'inline-block', width: '70%', p:4.5, ml: 5 }}>
-                <InventoryLineChart />
+            <Box sx={{ display: 'inline-block', width: '70%', }}>
+                <Typography sx={{ fontSize: 25, fontWeight: 1000, ml:43, mt: 1.5 }} color="#065073" gutterBottom >
+                Suggested Actions
+                </Typography>
+                <Typography sx={{ fontSize: 25, fontWeight: 1000, ml:43, mt: 1.5 }} color="#065073" gutterBottom >
+                Zebra System Management
+                </Typography>
+                <Typography sx={{ fontSize: 25, fontWeight: 1000, ml:43, mt: 1.5 }} color="#065073" gutterBottom >
+                Zebra System Management
+                </Typography>
+                <Typography sx={{ fontSize: 25, fontWeight: 1000, ml:43, mt: 1.5 }} color="#065073" gutterBottom >
+                Zebra System Management
+                </Typography>
             </Box>
         </Grid>
       </CardContent>
-
+      <CardActions>
+        <Button size="large">View all advisories</Button>
+      </CardActions>
     </React.Fragment>
   );
 
@@ -56,7 +69,7 @@ const card = (
 
     const handleExpandClick = () => {
       setExpanded(!expanded);
-    };
+    }
     return (
       <Box sx={{ minWidth: 275 }}>
         <Card variant="outlined">
@@ -73,7 +86,7 @@ const card = (
           </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-              <ResourceDatagrid />  
+              <ResourceComposedChart />  
           </CardContent>
         </Collapse>
         </Card>

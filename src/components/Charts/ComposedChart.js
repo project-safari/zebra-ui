@@ -3,60 +3,68 @@ import React from "react";
 
 const data = [
     {
-      "name": "07/31",
-      "Available": 4000,
-      "Leased": 2400,
-      "Amount": 2400
+      "name": "4:00 A.M.",
+      "Requests": 0,
+      "Leased": 2,
+      "Inventory": 24,
+      "Anomalies": 0
     },
     {
-      "name": "08/01",
-      "Available": 3000,
-      "Leased": 1398,
-      "Amount": 2210
+      "name": "5:00 A.M.",
+      "Requests": 2,
+      "Leased": 4,
+      "Inventory": 22,
+      "Anomalies": 1
     },
     {
-      "name": "08/02",
-      "Available": 2000,
-      "Leased": 9800,
-      "Amount": 2290
+      "name": "6:00 A.M.",
+      "Requests": 0,
+      "Leased": 3,
+      "Inventory": 22,
+      "Anomalies": 0
     },
     {
-      "name": "08/03",
-      "Available": 2780,
-      "Leased": 3908,
-      "Amount": 2000
+      "name": "7:00 A.M.",
+      "Requests": 5,
+      "Leased": 5,
+      "Inventory": 20,
+      "Anomalies": 0
     },
     {
-      "name": "08/04",
-      "Available": 1890,
-      "Leased": 4800,
-      "Amount": 2181
+      "name": "8:00 A.M.",
+      "Requests": 8,
+      "Leased": 8,
+      "Inventory": 21,
+      "Anomalies": 1
     },
     {
-      "name": "08/05",
-      "Available": 2390,
-      "Leased": 3800,
-      "Amount": 2500
+      "name": "9:00 A.M.",
+      "Requests": 40,
+      "Leased": 25,
+      "Inventory": 25,
+      "Anomalies": 2
     },
     {
-      "name": "08/06",
-      "Available": 3490,
-      "Leased": 4300,
-      "Amount": 2100
+      "name": "10:00 A.M.",
+      "Requests": 34,
+      "Leased": 15,
+      "Inventory": 21,
+      "Anomalies": 0
     }
   ]
   
   export default function ResourceComposedChart () {
          return (                     
-            <ComposedChart width={650} height={250} data={data}>
+            <ComposedChart width={1200} height={300} data={data}>
                 <XAxis dataKey="name" />
                 <YAxis />
                 <Tooltip />
                 <Legend />
                 <CartesianGrid stroke="#f5f5f5" />
-                <Area type="monotone" dataKey="Amount" fill="#8884d8" stroke="#8884d8" />
+                <Area type="monotone" dataKey="Inventory" fill="#8884d8" stroke="#8884d8" />
                 <Bar dataKey="Leased" barSize={20} fill="#413ea0" />
-                <Line type="monotone" dataKey="Available" stroke="#ff7300" />
+                <Line type="monotone" dataKey="Anomalies" stroke="#B63722" />
+                <Line type="monotone" dataKey="Requests" stroke="#ff7300" />
             </ComposedChart>
     );
   }
