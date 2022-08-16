@@ -171,22 +171,32 @@ export default function LeaseForm() {
     event.preventDefault();
     try{
       API.post(RESOURCE_URL, {
-          Lease : [{
-            type: "Lease",
-            labels: {
-              "system.group": "leases"
-            },
-            status : {
-              usedBy: "ali@agrabah.com",
-            },
-            duration: "4h",
-            request: [{
-              type: "Server",
-              group: "global",
-              count: 3
-            }]
-          }]
-        })
+        Lease: [
+              {
+                  id: '6ece8a94-367b-4af6-8f22-e964b1b0b774',
+                  type: 'Lease',
+                  labels: {
+                      'system.group': 'leases'
+                  },
+                  status: {
+                      fault: 'none',
+                      lease: 'free',
+                      usedBy: 'admin@zebra.project-safari.io',
+                      state: 'inactive',
+                      createdTime: '2022-08-16T09:31:49.714958-07:00'
+                  },
+                  duration: 14400000000000,
+                  request: [
+                      {
+                          type: 'Server',
+                          group: 'global',
+                          name: '',
+                          count: 3
+                      }
+                  ],
+                  activationTime: '0001-01-01T00:00:00Z'
+              }
+          ]})
       .then((response) => {
         navigate('/');
         console.log(response);

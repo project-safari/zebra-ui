@@ -30,10 +30,10 @@ export default function Content() {
 
   return (
     <Paper sx={{ maxWidth: 1400, margin: 'auto', overflow: 'hidden' }}>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h6" gutterBottom align='center' sx={{fontWeight: 1000, color: '#065073', fontSize: 25}}>
         Welcome to the Zebra System Management Dashboard
       </Typography>
-      
+
       <UserActiveLeases />
 
       <Grid container>
