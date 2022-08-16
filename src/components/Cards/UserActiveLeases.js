@@ -38,7 +38,7 @@ const card = (
                     0
                     </Typography>
                 <Typography sx={{ mr:2 }} color="text.secondary">
-                    You currently have one ongoing lease request. To manage or add leases, click below.
+                    You currently have no anomalies in your systems. To manage or review anomalies, click below.
                 </Typography>
             </Box>
             <Box sx={{ display: 'inline-block', width: '30%', p: 1.5, ml: 7}}>

@@ -1,5 +1,8 @@
 import React from 'react';
 import Box from '@mui/material/Box';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import UpgradeIcon from '@mui/icons-material/Upgrade';
+import SyncIcon from '@mui/icons-material/Sync';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -35,14 +38,32 @@ const card = (
                 <Typography sx={{ fontSize: 25, fontWeight: 1000, ml:43, mt: 1.5 }} color="#065073" gutterBottom >
                 Suggested Actions
                 </Typography>
-                <Typography sx={{ fontSize: 25, fontWeight: 1000, ml:43, mt: 1.5 }} color="#065073" gutterBottom >
-                Zebra System Management
+                <Typography sx={{ fontSize: 20, fontWeight: 500, ml:43, mt: 1.5 }} color="text.secondary" gutterBottom >
+                <IconButton sx={{ px:2, py: 3, color:'#B63722', }}>
+                    <TrendingUpIcon sx={{fontSize: 40}} />
+                </IconButton>
+                Trending Higher
                 </Typography>
-                <Typography sx={{ fontSize: 25, fontWeight: 1000, ml:43, mt: 1.5 }} color="#065073" gutterBottom >
-                Zebra System Management
+                <Typography sx={{ fontSize: 15, fontWeight: 250, ml:52, }} color="text.secondary" gutterBottom >
+                 The number of daily advisories is higher than average.
                 </Typography>
-                <Typography sx={{ fontSize: 25, fontWeight: 1000, ml:43, mt: 1.5 }} color="#065073" gutterBottom >
-                Zebra System Management
+                <Typography sx={{ fontSize: 20, fontWeight: 500, ml:43, mt: 1.5 }} color="text.secondary" gutterBottom >
+                <IconButton sx={{ px:2, py: 3, color:'#599E05'}}>
+                    <UpgradeIcon sx={{fontSize: 40}}/>
+                </IconButton>
+                Upgrades Available
+                </Typography>
+                <Typography sx={{ fontSize: 15, fontWeight: 250, ml:52, }} color="text.secondary" gutterBottom >
+                 Make sure your setups are running the latest software.
+                </Typography>
+                <Typography sx={{ fontSize: 20, fontWeight: 500, ml:43, mt: 1.5, }} color="text.secondary" gutterBottom >
+                <IconButton sx={{ px:2, py: 3, color:'#D9B216'}}>
+                    <SyncIcon sx={{fontSize: 40}}/>
+                </IconButton>
+                Restart the Physical Setups
+                </Typography>
+                <Typography sx={{ fontSize: 15, fontWeight: 250, ml:52, }} color="text.secondary" gutterBottom >
+                 Could be an error with the setup wiring.
                 </Typography>
             </Box>
         </Grid>
