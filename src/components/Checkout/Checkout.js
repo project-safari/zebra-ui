@@ -45,12 +45,22 @@ export default function Checkout() {
     setActiveStep(activeStep - 1);
   };
 
-  const submitLeaseRequest = () => {
-    axios.post(RESOURCE_URL, {
-      type: type,
-      group: group,
-      count: count,
-    });
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    try{
+      axios.post(RESOURCE_URL, {
+        template: data.get('template'),
+        lease: data.get('lease'),
+      })
+      .then((response) => {
+        console.log(response);
+      })
+    } catch (e) {
+      console.log(e);
+    }
   }
 
 

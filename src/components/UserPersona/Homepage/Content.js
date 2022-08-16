@@ -13,6 +13,8 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import Active from '../../Cards/Active';
 import ResourceDatagrid from '../../Datagrid/ResourceDatagrid';
 import UserInventory from '../../Cards/UserInventory';
+import UserAnomalies from '../../Cards/UserAnomalies';
+import UserActiveLeases from '../../Cards/UserActiveLeases';
 import BasicModal from '../../Modal/Modal';
 import Template from '../../Cards/Template';
 
@@ -28,67 +30,18 @@ export default function Content() {
 
   return (
     <Paper sx={{ maxWidth: 1400, margin: 'auto', overflow: 'hidden' }}>
-      <AppBar
-        position="static"
-        color="default"
-        elevation={0}
-        sx={{ borderBottom: '1px solid rgba(0, 0, 0, 0.12)' }}
-      >
-        <Toolbar>
-          <Grid container spacing={2} alignItems="center">
-            <Grid item>
-              <SearchIcon color="inherit" sx={{ display: 'block' }} />
-            </Grid>
-            <Grid item xs>
-              <TextField
-                fullWidth
-                placeholder="Search for templates"
-                InputProps={{
-                  disableUnderline: true,
-                  sx: { fontSize: 'default' },
-                }}
-                variant="standard"
-              />
-            </Grid>
-            <Grid item>
-              <Button variant="contained" sx={{ mr: 1 }} onClick={handleOpen}>
-                Add Lease Template
-              </Button>
-              <Tooltip title="Reload">
-                <IconButton>
-                  <RefreshIcon color="inherit" sx={{ display: 'block' }} />
-                </IconButton>
-              </Tooltip>
-            </Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
-      <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center">
-        You have no active lease requests pending.
+      <Typography variant="h6" gutterBottom>
+        Welcome to the Zebra System Management Dashboard
       </Typography>
-      <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center">
-        Start a Lease Request from your saved templates below, or create a new lease request.
-      </Typography>
-      <Grid container spacing={4}  >
-        <Grid item>
-          <Active />
-        </Grid>
-        <Grid item>
-          <Active />
-        </Grid>
-        <Grid item>
-          <Active />
-        </Grid>
-        <Grid item>
-          <Active />
-        </Grid>
-        <Grid item>
-          <Active />
-        </Grid>
-      </Grid>
+      
+      <UserActiveLeases />
+
       <Grid container>
-        <Grid item xs sx={{ p: 6 }}>
+        <Grid item xs sx={{ p: 4.5, }}>
           <UserInventory />
+        </Grid>
+        <Grid item xs sx={{ p: 4.5, }}>
+          <UserAnomalies />
         </Grid>
       </Grid>
 
