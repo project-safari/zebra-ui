@@ -163,7 +163,7 @@ export default function UserHome() {
     // display the sidebar
     sidebarOpen(!sidebar);
   };
-
+  
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ display: 'flex', minHeight: '100vh' }}>

@@ -17,6 +17,7 @@ import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Session from './components/Session/Session';
 import axios from 'axios';
+import PrivateRoutes from './utils/PrivateRoute';
 import { AuthProvider } from './context/AuthContext';
 
 export default function App() {
@@ -25,7 +26,9 @@ export default function App() {
       <AuthProvider>
         <Routes>
           <Route path="/home" element={<Home />} />
-          <Route path="/" element={<UserHome />} />
+          <Route element={<PrivateRoutes/>}>
+            <Route path="/" element={<UserHome />} />
+          </Route>
           <Route path="/lease" element={<LeaseHome />} />
           <Route path="/templates" element={<TemplateHome />} />
           <Route path='/datagrid' element={<ResourceDatagrid/>} />
