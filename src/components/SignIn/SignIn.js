@@ -15,14 +15,14 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { LOGIN_URL } from '../../constants/urls';
 import axios from 'axios';
-import AuthContext from '../../context/AuthContext';
 import API from '../../api/Api';
 
 const theme = createTheme();
 
 export default function SignIn() {
   const navigate = useNavigate();
-  let {loginUser} = useContext(AuthContext)
+  const [user, setUser] = useState(null);
+  const [role, setRole] = useState(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -34,7 +34,13 @@ export default function SignIn() {
       })
       .then((response) => {
         navigate('/');
+        setUser(response.data.email);
+        setRole(response.data.role);
+
         console.log(response);
+        console.log(user);
+        console.log(role);
+
       });
     } catch (e) {
       console.log(e);
