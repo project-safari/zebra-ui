@@ -15,7 +15,6 @@ import ResourceDatagrid from '../../Datagrid/ResourceDatagrid';
 import UserInventory from '../../Cards/UserInventory';
 import UserAnomalies from '../../Cards/UserAnomalies';
 import UserActiveLeases from '../../Cards/UserActiveLeases';
-import BasicModal from '../../Modal/Modal';
 import Template from '../../Cards/Template';
 
 export default function Content() {
