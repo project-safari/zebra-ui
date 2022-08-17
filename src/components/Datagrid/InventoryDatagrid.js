@@ -38,6 +38,7 @@ function getChipProps(params){
 
 
 const columns = [
+    { field: 'id', headerName: 'Resource ID', width: 150, editable: true },
     { field: 'type', headerName: 'Resource Type', width: 150, editable: true, },
     { field: 'state', headerName: 'Status', width: 150, editable: true, 
         valueGetter: (params) => params.row.status.state,
@@ -51,6 +52,42 @@ const columns = [
             }
         }
     },
+    { field: 'lease', headerName: 'Lease Availability', width: 150, editable: true,
+    valueGetter: (params) => params.row.status.lease,
+    },
+    { field: 'createdTime', headerName: 'Time Created', width: 150, editable: true, 
+        valueGetter: (params) => params.row.status.createdTime,    
+    },
+    { field: 'description', headerName: 'Description', width: 300, editable: true, 
+    valueGetter: (params) => JSON.stringify(params.row.labels),},
+    { field: 'actions', headerName: 'Actions', width: 150, editable: true,
+    renderCell: (params) => {
+        return (
+            <Box display='flex' flexDirection='row' alignItems='center' justifyContent='center'>
+                <Box mr={1}>
+                    <IconButton aria-label="delete" > 
+                        <DeleteIcon 
+                            onClick={ async () => {
+                                await axios.delete(RESOURCE_URL`${params.row.name}`);
+                                window.location.reload();
+                            }
+                        } />
+                    </IconButton> 
+                </Box>
+                <Box mr={1}>
+                    <IconButton aria-label="delete" > 
+                        <SecurityIcon />
+                    </IconButton> 
+                </Box>
+                <Box mr={1}>
+                    <IconButton aria-label="delete" > 
+                        <FileCopyIcon />
+                    </IconButton> 
+                </Box>
+            </Box>
+        );
+    }
+}
 ];
 
 export default function InventoryDatagrid() {
@@ -299,12 +336,12 @@ export default function InventoryDatagrid() {
     }
     const testData = datacenterData.concat(ipaddresspoolData, rackData, labData, leaseData, serverData, switchData, vlanData, vmData);
   return (
-    <Box sx={{ height: 650, width: '100%' }}>
+    <Box sx={{ height: 800, width: '100%' }}>
       <DataGrid
         rows={ testData }
         columns={columns}
-        pageSize={20}
-        rowsPerPageOptions={[10]}
+        pageSize={50}
+        rowsPerPageOptions={[20]}
         checkboxSelection
         disableSelectionOnClick
         components={{ Toolbar: GridToolbar }}
