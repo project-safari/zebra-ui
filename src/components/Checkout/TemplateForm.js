@@ -135,7 +135,8 @@ function valuetext(value) {
     return `${value}`;
 }
 
-
+// If 2 Node ND cluster is selected, send an axios request to get the lease for 2 Node ND cluster
+// If 3 Node vND cluster is selected, send an axios request to get the lease for 3 Node vND cluster
 export default function TemplateForm() {
   const [template, setTemplate] = React.useState('');
   const handleChange = (event) => {

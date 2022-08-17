@@ -16,6 +16,7 @@ import API from '../../api/Api';
 import axios from 'axios';
 
 
+
 function getChipProps(params){
     if (params.value === "inactive") {
       return {
@@ -67,7 +68,7 @@ const columns = [
                         <IconButton aria-label="delete" > 
                             <DeleteIcon 
                                 onClick={ async () => {
-                                    await axios.delete(RESOURCE_URL`${params.row.name}`);
+                                    await axios.delete(`${RESOURCE_URL}/${params.row.id}`);
                                     window.location.reload();
                                 }
                             } />
@@ -94,6 +95,7 @@ export default function LeaseDatagrid() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [rows, setRows] = useState(null);
+    const [count, setCount] = useState(0);
 
 
     const deleteRow = React.useCallback(async (params) => {
@@ -166,6 +168,8 @@ export default function LeaseDatagrid() {
             }
             );
             setData(newData);
+        } else {
+            setError(response.data);
         }
     }
         , [data]);
@@ -175,13 +179,13 @@ export default function LeaseDatagrid() {
         try {
             const data = await API.get(
                 RESOURCE_URL, {
-                    params: {
-                        types: 'server',
-                }
             }
             );
             setData(data.data.Lease);
             console.log(data.data.Lease);
+            console.log(data.data.Lease.length);
+            setCount(data.data.Lease.length);
+            console.log(count);
             }
         catch (e) {
             setError(e);
@@ -200,6 +204,8 @@ export default function LeaseDatagrid() {
     if (error) {
         return <div>Error: {error.message}</div>;
     }
+
+
 
   return (
     <Box sx={{ height: 650, width: '100%' }}>

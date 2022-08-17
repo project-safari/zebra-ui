@@ -14,6 +14,8 @@ import Box from '@mui/material/Box';
 import { Select, MenuItem } from '@mui/material';
 import Chip from '@mui/material/Chip';
 import Checkbox from '@mui/material/Checkbox';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 import Slider from '@mui/material/Slider';
 import InputBase from '@mui/material/InputBase';
 import { LEASE_URL, RESOURCE_URL } from '../../constants/urls';
@@ -61,6 +63,10 @@ const MenuProps = {
         },
     },
 };
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
   'label + &': {
@@ -137,7 +143,16 @@ export default function LeaseForm() {
   const [label, setLabels] = React.useState([]);
   const [count, setCount] = React.useState(0);
   const [isTrue, setIsTrue] = React.useState(false);
-
+  const [open, setOpen] = React.useState(false);
+  const handleClick = () => {
+    setOpen(true);
+  };
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
 
 
   const navigate = useNavigate();
@@ -175,7 +190,7 @@ export default function LeaseForm() {
       API.post(RESOURCE_URL, {
         Lease: [
               {
-                  id: '6ece8a94-367b-4af6-8f22-e964b1b0b776',
+                  id: '6ece8a94-367b-4af6-8f22-e964b1b0b778',
                   type: 'Lease',
                   labels: {
                       'system.group': 'leases'
@@ -279,14 +294,20 @@ export default function LeaseForm() {
                   valueLabelDisplay="on"
               />
           </Box>
-          <Button
+            <Button
               type="submit"
+              onClick={handleClick}
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
               Submit
             </Button>
+            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+              This is a success message!
+            </Alert>
+            </Snackbar>
           </Box>
 
           <Grid item xs={12}>
