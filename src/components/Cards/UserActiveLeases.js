@@ -16,6 +16,7 @@ import BasicModal from '../Modal/LeaseModal';
 import AnomalyModal from '../Modal/AnomalyModal';
 import InventoryModal from '../Modal/InventoryModal';
 
+
 const card = (
     <React.Fragment>
       <CardContent>
@@ -25,7 +26,7 @@ const card = (
                 Current Lease Requests
                 </Typography>
                     <Typography sx={{ fontSize: 100, fontWeight: 1000, ml: 15, mt: 0.5,}} color="#D9B216" gutterBottom >
-                    3
+                     3
                     </Typography>
                 <Typography sx={{ mr:2 }} color="text.secondary">
                     You currently have one ongoing lease request. To manage or add leases, click below.
@@ -66,7 +67,6 @@ const card = (
 
 
   export default function Chart() {
-
     return (
       <Box sx={{ minWidth: 275, p: 4.5, }}>
         <Card variant="outlined">
