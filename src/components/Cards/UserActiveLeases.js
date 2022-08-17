@@ -25,7 +25,7 @@ const card = (
                 Current Lease Requests
                 </Typography>
                     <Typography sx={{ fontSize: 100, fontWeight: 1000, ml: 15, mt: 0.5,}} color="#D9B216" gutterBottom >
-                    1
+                    3
                     </Typography>
                 <Typography sx={{ mr:2 }} color="text.secondary">
                     You currently have one ongoing lease request. To manage or add leases, click below.
