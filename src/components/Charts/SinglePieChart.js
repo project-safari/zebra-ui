@@ -2,10 +2,10 @@ import React, { useCallback, useState } from "react";
 import { PieChart, Pie, Sector } from "recharts";
 
 const data = [
-  { name: "Group A", value: 400 },
-  { name: "Group B", value: 300 },
-  { name: "Group C", value: 300 },
-  { name: "Group D", value: 200 }
+  { name: "Datacenters", value: 400 },
+  { name: "Servers", value: 300 },
+  { name: "VM", value: 300 },
+  { name: "VLAN", value: 200 }
 ];
 
 const renderActiveShape = (props) => {
@@ -67,7 +67,7 @@ const renderActiveShape = (props) => {
         y={ey}
         textAnchor={textAnchor}
         fill="#333"
-      >{`PV ${value}`}</text>
+      >{`Count ${value}`}</text>
       <text
         x={ex + (cos >= 0 ? 1 : -1) * 12}
         y={ey}
@@ -75,7 +75,7 @@ const renderActiveShape = (props) => {
         textAnchor={textAnchor}
         fill="#999"
       >
-        {`(Rate ${(percent * 100).toFixed(2)}%)`}
+        {`(Anomaly Rate ${(percent * 100).toFixed(2)}%)`}
       </text>
     </g>
   );
@@ -91,15 +91,15 @@ export default function SinglePieChart() {
   );
 
   return (
-    <PieChart width={400} height={250}>
+    <PieChart width={700} height={500}>
       <Pie
         activeIndex={activeIndex}
         activeShape={renderActiveShape}
         data={data}
-        cx={200}
-        cy={125}
-        innerRadius={60}
-        outerRadius={80}
+        cx={350}
+        cy={250}
+        innerRadius={80}
+        outerRadius={120}
         fill="#8884d8"
         dataKey="value"
         onMouseEnter={onPieEnter}
