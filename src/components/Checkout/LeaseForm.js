@@ -173,7 +173,7 @@ export default function LeaseForm() {
       API.post(RESOURCE_URL, {
         Lease: [
               {
-                  id: '6ece8a94-367b-4af6-8f22-e964b1b0b774',
+                  id: '6ece8a94-367b-4af6-8f22-e964b1b0b775',
                   type: 'Lease',
                   labels: {
                       'system.group': 'leases'
@@ -191,7 +191,7 @@ export default function LeaseForm() {
                           type: 'Server',
                           group: 'global',
                           name: '',
-                          count: 3
+                          count: 2
                       }
                   ],
                   activationTime: '0001-01-01T00:00:00Z'

@@ -11,9 +11,10 @@ import ResourceDatagrid from '../Datagrid/ResourceDatagrid';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import ResourceComposedChart from '../Charts/ComposedChart';
-import { Grid } from '@mui/material';
-
-
+import { Grid, Modal } from '@mui/material';
+import BasicModal from '../Modal/LeaseModal';
+import AnomalyModal from '../Modal/AnomalyModal';
+import InventoryModal from '../Modal/InventoryModal';
 
 const card = (
     <React.Fragment>
@@ -55,10 +56,9 @@ const card = (
         </Grid>
       </CardContent>
       <CardActions>
-        <Button size="large" sx={{ml:10, mr: 34}}>View resource requests</Button>
-        <Button size="large" sx={{ml:10, mr: 40}}>View anomalies</Button>
-        <Button size="large" sx={{mr:10}}>View Inventory</Button>
-
+        <BasicModal />
+        <AnomalyModal />
+        <InventoryModal />
       </CardActions>
     </React.Fragment>
   );
