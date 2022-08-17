@@ -1,17 +1,11 @@
+import React from "react";
+import { Navigate } from "react-router-dom";
 
-import React from 'react'
-import { Outlet, Navigate } from 'react-router-dom'
+export default function RequireAuth({ children, redirectTo }) {
+    let isAuthenticated = getAuth();
+    return isAuthenticated ? children : <Navigate to={redirectTo} />;
+  }
 
-
-
-export default function PrivateRoutes() {
-    let  userid = localStorage.getItem("jwt") == null ? false : true;
-    return (
-        <>
-            {userid ? <Outlet  /> : <Navigate to="/login" />};
-        </>
-
-    )
-
-}
-
+  function getAuth(){
+    return localStorage.getItem('authTokens') !== null;
+  }

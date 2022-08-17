@@ -49,6 +49,8 @@ const marks = [
     },
 ];
 
+
+
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -173,7 +175,7 @@ export default function LeaseForm() {
       API.post(RESOURCE_URL, {
         Lease: [
               {
-                  id: '6ece8a94-367b-4af6-8f22-e964b1b0b775',
+                  id: '6ece8a94-367b-4af6-8f22-e964b1b0b776',
                   type: 'Lease',
                   labels: {
                       'system.group': 'leases'

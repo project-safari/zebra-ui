@@ -61,6 +61,66 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+const templates = [
+  { '2 Node ND Cluster': {
+    "Lease": [
+      {
+        "id": "69e00082-e426-4257-97a3-84c4f71f53eb",
+        "type": "Lease",
+        "labels": {
+          "system.group": "leases"
+        },
+        "status": {
+          "fault": "none",
+          "lease": "free",
+          "usedBy": "admin@zebra.project-safari.io",
+          "state": "inactive",
+          "createdTime": "2022-08-16T16:33:48.10341886Z"
+        },
+        "duration": 14400000000000,
+        "request": [
+          {
+            "type": "Server",
+            "group": "global",
+            "name": "",
+            "count": 3
+          }
+        ],
+        "activationTime": "0001-01-01T00:00:00Z"
+      }
+    ]
+  }
+  },
+  { '3 Node vND Cluster': {
+    "Lease": [
+      {
+        "id": "69e00082-e426-4257-97a3-84c4f71f53eb",
+        "type": "Lease",
+        "labels": {
+          "system.group": "leases"
+        },
+        "status": {
+          "fault": "none",
+          "lease": "free",
+          "usedBy": "admin@zebra.project-safari.io",
+          "state": "inactive",
+          "createdTime": "2022-08-16T16:33:48.10341886Z"
+        },
+        "duration": 14400000000000,
+        "request": [
+          {
+            "type": "VM",
+            "group": "global",
+            "name": "",
+            "count": 3
+          }
+        ],
+        "activationTime": "0001-01-01T00:00:00Z"
+      }
+    ]
+  }
+}
+]; 
 
 function getStyles(label, inputLabel, theme) {
     return {
@@ -112,8 +172,8 @@ export default function TemplateForm() {
           <MenuItem value="">
             <em>Custom Lease Request</em>
           </MenuItem>
-          <MenuItem value={10}>3 Node nd-cluster</MenuItem>
-          <MenuItem value={20}>4 Node nd-cluster</MenuItem>
+          <MenuItem value={10}>3 Node ND Cluster</MenuItem>
+          <MenuItem value={20}>3 Node vND Cluster</MenuItem>
           <MenuItem value={30}>2 Node nd-cluster</MenuItem>
           <MenuItem value={40}>3 Node nd-cluster & APIC</MenuItem>
         </Select>
