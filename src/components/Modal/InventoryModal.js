@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import ResourceDatagrid from '../Datagrid/ResourceDatagrid';
+import InventoryDatagrid from '../Datagrid/InventoryDatagrid';
 
 const style = {
   position: 'absolute',
@@ -35,7 +35,7 @@ export default function InventoryModal() {
             <Typography id="modal-modal-title" variant="h6" component="h2">
               Text in a modal
             </Typography>
-            <ResourceDatagrid />
+            <InventoryDatagrid />
             <Box sx={{display: 'flex', justifyContent: 'flex-end', mt: 2}}>
               <Button onClick={handleCloseLease} color="primary">
               </Button>
