@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "@playwright/test": "^1.25.0",
     "dotenv-webpack": "^8.0.0"
   }
 }
