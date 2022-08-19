@@ -86,6 +86,7 @@ function valuetext(value) {
 // If 3 Node vND cluster is selected, send an axios request to get the lease for 3 Node vND cluster
 export default function TemplateForm() {
   const [open, setOpen] = React.useState(false);
+  const [isTrue, setIsTrue] = React.useState(false);
   const handleClick = () => {
     setOpen(true);
   };
@@ -165,28 +166,27 @@ export default function TemplateForm() {
               onChange={handleChange}
               input={<BootstrapInput />}
             >
-              <MenuItem value="">
-                <em>Custom Lease Request</em>
-              </MenuItem>
+              <MenuItem value={0}>Custom Lease Request</MenuItem>
               <MenuItem value={10}>3 Node ND Cluster</MenuItem>
               <MenuItem value={20}>3 Node vND Cluster</MenuItem>
               <MenuItem value={30}>2 Node nd-cluster</MenuItem>
               <MenuItem value={40}>3 Node nd-cluster & APIC</MenuItem>
             </Select>
           </FormControl>
-          <Button
+          {template != 0 ? (
+            <><Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
               Submit
-            </Button>
-            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-            <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-              This is a success message!
-            </Alert>
-            </Snackbar>
+            </Button><Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                  This is a success message!
+                </Alert>
+              </Snackbar></>
+          ) : ( null )}
         </Box>
       </Grid>
     </React.Fragment>
