@@ -17,13 +17,11 @@ import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Session from './components/Session/Session';
 import axios from 'axios';
-import { AuthProvider } from './context/AuthContext';
 import RequireAuth from './utils/PrivateRoute';
 
 export default function App() {
   return (
     <Router>
-      <AuthProvider>
         <Routes>
           <Route path="/home" element={
             <RequireAuth redirectTo='/login'>
@@ -49,7 +47,6 @@ export default function App() {
           <Route path="/login" element={<SignIn />} />
           <Route path="/register" element={<SignUp />} />
         </Routes>
-      </AuthProvider>
     </Router>
   );
   }
