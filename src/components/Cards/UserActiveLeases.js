@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import ResourceComposedChart from '../Charts/ComposedChart';
 import { Grid, Modal } from '@mui/material';
+import Divider from '@mui/material/Divider';
 import BasicModal from '../Modal/LeaseModal';
 import AnomalyModal from '../Modal/AnomalyModal';
 import InventoryModal from '../Modal/InventoryModal';
@@ -26,12 +27,13 @@ const card = (
                 Current Lease Requests
                 </Typography>
                     <Typography sx={{ fontSize: 100, fontWeight: 1000, ml: 15, mt: 0.5,}} color="#D9B216" gutterBottom >
-                     3
+                     5
                     </Typography>
                 <Typography sx={{ mr:2 }} color="text.secondary">
                     You currently have one ongoing lease request. To manage or add leases, click below.
                 </Typography>
             </Box>
+            <Divider orientation="vertical" variant='middle' flexItem />
             <Box sx={{ display: 'inline-block', width: '30%', p: 1.5, ml: 7}}>
                 <Typography sx={{ fontSize: 25, fontWeight: 1000, ml: 11 }} color="#065073" gutterBottom >
                 Anomalies
@@ -43,6 +45,7 @@ const card = (
                     You currently have no anomalies in your systems. To manage or review anomalies, click below.
                 </Typography>
             </Box>
+            <Divider orientation="vertical" variant='middle' flexItem/>
             <Box sx={{ display: 'inline-block', width: '30%', p: 1.5, ml: 7}}>
                 <Typography sx={{ fontSize: 25, fontWeight: 1000, ml: 1 }} color="#065073" gutterBottom >
                 Systems Under Management

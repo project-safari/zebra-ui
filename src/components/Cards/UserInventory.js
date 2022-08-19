@@ -7,6 +7,7 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
+import Divider from '@mui/material/Divider';
 import ResourceDatagrid from '../Datagrid/ResourceDatagrid';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -31,6 +32,7 @@ const card = (
                     For the past 6 months, you have a 75% hardware utilization rate for your inventory.
                 </Typography>
             </Box>
+            <Divider orientation="vertical" variant='middle' flexItem />
             <Box sx={{ display: 'inline-block', width: '70%', p:4.5, ml: 5 }}>
                 <InventoryLineChart />
             </Box>

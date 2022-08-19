@@ -56,6 +56,9 @@ const data = [
   export default function ResourceComposedChart () {
          return (                     
             <ComposedChart width={1200} height={300} data={data}>
+                <text x={1200 / 2} y={20} fill="black" textAnchor="middle" dominantBaseline="central">
+                  <tspan fontSize="16">Note: Uses Mock Data</tspan>
+                </text>
                 <XAxis dataKey="name" />
                 <YAxis />
                 <Tooltip />

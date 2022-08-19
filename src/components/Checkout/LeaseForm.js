@@ -3,6 +3,11 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import TextField from '@mui/material/TextField';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
+import DirectionsIcon from '@mui/icons-material/Directions';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
@@ -11,7 +16,7 @@ import { useTheme } from '@mui/material/styles';
 import ListItemText from '@mui/material/ListItemText';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import { Select, MenuItem } from '@mui/material';
+import { Select, MenuItem, FormHelperText } from '@mui/material';
 import Chip from '@mui/material/Chip';
 import Checkbox from '@mui/material/Checkbox';
 import Snackbar from '@mui/material/Snackbar';
@@ -30,24 +35,44 @@ const marks = [
         label: '0',
     },
     {
-        value: 20,
-        label: '20',
+        value: 1,
+        label: '1',
     },
     {
-        value: 40,
-        label: '40',
+        value: 2,
+        label: '2',
     },
     {
-        value: 60,
-        label: '60',
+        value: 3,
+        label: '3',
     },
     {
-        value: 80,
-        label: '80',
+        value: 4,
+        label: '4',
     },
     {
-        value: 100,
-        label: '100',
+        value: 5,
+        label: '5',
+    },
+    {
+        value: 6,
+        label: '6',
+    },
+    {
+        value: 7,
+        label: '7',
+    },
+    {
+        value: 8,
+        label: '8',
+    },
+    {
+        value: 9,
+        label: '9',
+    },
+    {
+        value: 10,
+        label: '10',
     },
 ];
 
@@ -141,7 +166,7 @@ export default function LeaseForm() {
   const [group, setGroup] = React.useState('');
 
   const [label, setLabels] = React.useState([]);
-  const [count, setCount] = React.useState(0);
+  const [count, setCount] = React.useState(1);
   const [isTrue, setIsTrue] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const handleClick = () => {
@@ -190,7 +215,7 @@ export default function LeaseForm() {
       API.post(RESOURCE_URL, {
         Lease: [
               {
-                  id: '6ece8a94-367b-4af6-8f22-e964b1b0b778',
+                  id: '6ece8a94-367b-4af6-8f22-e964b1b0b779',
                   type: 'Lease',
                   labels: {
                       'system.group': 'leases'
@@ -225,8 +250,21 @@ export default function LeaseForm() {
 
   return (
     <React.Fragment>
+      <IconButton sx={{ p: '10px' }} aria-label="menu">
+        <MenuIcon />
+      </IconButton>
+      <InputBase
+        sx={{ ml: 1, flex: 1, minWidth: 700 }}
+        placeholder="Search for a Specific Resource ID"
+        inputProps={{ 'aria-label': 'search google maps' }}
+      />
+      <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+        <SearchIcon />
+      </IconButton>
+      <Divider sx={{ height: 24, m: 0.5 }} orientation="vertical" />
+
       <Typography variant="h6" gutterBottom>
-        Search for a Template Lease Request
+        Create custom lease request
       </Typography>
       <Grid container spacing={3}>
         <Box component="form" onSubmit={makeLease} noValidate>
@@ -241,22 +279,26 @@ export default function LeaseForm() {
               label="type"
           >
               <MenuItem value="Datacenter">Datacenter</MenuItem>
+              <MenuItem value="IP Address Pool">IP Address Pool</MenuItem>
+              <MenuItem value="Lab">Lab</MenuItem>
+              <MenuItem value="Rack">Rack</MenuItem>
               <MenuItem value="Server">Server</MenuItem>
-              <MenuItem value="Storage">Storage</MenuItem>
-              <MenuItem value="Network">Network</MenuItem>
-              <MenuItem value="Software">Software</MenuItem>
-              <MenuItem value="Other">Other</MenuItem>
+              <MenuItem value="Switch">Switch</MenuItem>
+              <MenuItem value="VLAN Pool">VLAN Pool</MenuItem>
+              <MenuItem value="VM">VM</MenuItem>
           </Select>
           </FormControl>
           <FormControl variant="standard" sx={{ m: 3, minWidth: 800 }}>
-          <InputLabel id='resource-label'> Labels </InputLabel>
+          <InputLabel id="labels" sx={{ml: 1.5}}>Labels</InputLabel>
           <Select
               labelId='labels'
               name='labels'
+              label="Labels"
               id='labels'
               multiple
               value={inputlabel}
               onChange={handleLabelChange}
+              helperText="Please select any label filters"
               input={<OutlinedInput id='select-multiple-chip' label='Chip' />}
               renderValue={(selected) => (
               <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
@@ -273,7 +315,47 @@ export default function LeaseForm() {
               </MenuItem>
               ))}
           </Select>
+          <FormHelperText>Please select any label filters</FormHelperText>
           </FormControl>
+          <FormControl sx={{ m: 3, minWidth: 120, display:'inline-block' }}>
+        <InputLabel htmlFor="grouped-native-select">Grouping</InputLabel>
+        <Select native defaultValue="" id="grouped-native-select" label="Grouping">
+          <option aria-label="None" value="" />
+          <optgroup label="Datacenter">
+            <option value={1}>Address</option>
+          </optgroup>
+          <optgroup label="Rack">
+            <option value={2}>Row</option>
+          </optgroup>
+          <optgroup label="Server">
+            <option value={3}>Board IP</option>
+            <option value={4}>Model</option>
+          </optgroup>
+          <optgroup label="Switch">
+            <option value={5}>Management IP</option>
+            <option value={6}>Model</option>
+            <option value={7}>Number of Ports</option>
+          </optgroup>
+          <optgroup label="VLAN Pool">
+            <option value={8}>Range Start</option>
+            <option value={9}>Range End</option>
+          </optgroup>
+          <optgroup label="VM">
+            <option value={10}>ESX ID</option>
+            <option value={11}>Management IP</option>
+            <option value={12}>vCenter ID</option>
+          </optgroup>
+        </Select>
+        <TextField sx={{minWidth: 615}} 
+              labelId='name'
+              name='name'
+              placeholder='Additional requests'
+              id='name'
+              helperText="Select any additional query parameters"
+              value={resourceName}
+              onChange={(e) => setResourceName(e.target.value)}
+          />
+      </FormControl>
           <Typography variant="h6" gutterBottom sx={{ m:3 }}> 
           How many do you want to reserve?
           </Typography>
@@ -283,7 +365,10 @@ export default function LeaseForm() {
                   aria-label="Always visible"
                   name='count'
                   id='count'
+                  step={1}
                   defaultValue={1}
+                  min={0}
+                  max={10}
                   getAriaValueText={valuetext}
                   onChange={(e, value) => {
                     setCount(value)

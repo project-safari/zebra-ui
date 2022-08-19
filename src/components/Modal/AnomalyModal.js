@@ -33,7 +33,7 @@ export default function AnomalyModal() {
         >
           <Box sx={{position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 750, bgcolor: 'background.paper', border: '2px solid #000', boxShadow: 24, p: 4}}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-              Anomaly Breakdown
+              Anomaly Breakdown w/ Mock Data
             </Typography>
            <SinglePieChart/>
             <Box sx={{display: 'flex', justifyContent: 'flex-end', mt: 2}}>
