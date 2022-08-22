@@ -27,7 +27,7 @@ const card = (
                 Current Lease Requests
                 </Typography>
                     <Typography sx={{ fontSize: 100, fontWeight: 1000, ml: 15, mt: 0.5,}} color="#D9B216" gutterBottom >
-                     5
+                     1
                     </Typography>
                 <Typography sx={{ mr:2 }} color="text.secondary">
                     You currently have one ongoing lease request. To manage or add leases, click below.
@@ -42,7 +42,7 @@ const card = (
                     0
                     </Typography>
                 <Typography sx={{ mr:2 }} color="text.secondary">
-                    You currently have no anomalies in your systems. To manage or review anomalies, click below.
+                    You currently have no anomalies in your systems. To review anomalies, click below.
                 </Typography>
             </Box>
             <Divider orientation="vertical" variant='middle' flexItem/>
@@ -50,11 +50,11 @@ const card = (
                 <Typography sx={{ fontSize: 25, fontWeight: 1000, ml: 1 }} color="#065073" gutterBottom >
                 Systems Under Management
                 </Typography>
-                    <Typography sx={{ fontSize: 100, fontWeight: 1000, ml: 12.5, mt: 0.5,}} color="#B63722" gutterBottom >
-                    12
+                    <Typography sx={{ fontSize: 100, fontWeight: 1000, ml: 11, mt: 0.5,}} color="#B63722" gutterBottom >
+                    800
                     </Typography>
                 <Typography sx={{ mr:2 }} color="text.secondary">
-                    You currently have 12 systems assigned to your group. To manage or add systems, click below.
+                    You currently have 800 systems assigned to you. To manage or add systems, click below.
                 </Typography>
             </Box>
         </Grid>

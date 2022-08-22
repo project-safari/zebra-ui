@@ -18,7 +18,7 @@ import Review from './Review';
 import axios from 'axios';
 import { RESOURCE_URL } from '../../constants/urls';
 
-const steps = ['Template or Custom', 'Lease Request', 'Review your request'];
+const steps = ['Template or Custom', 'Lease Request'];
 
 function getStepContent(step) {
   switch (step) {
@@ -26,8 +26,6 @@ function getStepContent(step) {
       return <TemplateForm />;
     case 1:
       return <LeaseForm />;
-    case 2:
-      return <Review />;
     default:
       throw new Error('Unknown step');
   }

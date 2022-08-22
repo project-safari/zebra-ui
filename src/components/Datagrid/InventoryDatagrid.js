@@ -7,10 +7,12 @@ import FileCopyIcon from '@mui/icons-material/FileCopy';
 import WarningIcon from '@mui/icons-material/Warning';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import Button from '@mui/material/Button';
+import SettingsIcon from '@mui/icons-material/Settings';
 import IconButton from '@mui/material/IconButton';
 import { red, green } from '@mui/material/colors';
 import Chip from '@mui/material/Chip';
 import renderCellExpand from '../../utils/renderCellExpand';
+import AddIcon from '@mui/icons-material/Add';
 import { RESOURCE_URL } from '../../constants/urls';
 import API from '../../api/Api';
 import axios from 'axios';
@@ -76,12 +78,12 @@ const columns = [
                 </Box>
                 <Box mr={1}>
                     <IconButton aria-label="delete" > 
-                        <SecurityIcon />
+                        <AddIcon />
                     </IconButton> 
                 </Box>
                 <Box mr={1}>
                     <IconButton aria-label="delete" > 
-                        <FileCopyIcon />
+                        <SettingsIcon />
                     </IconButton> 
                 </Box>
             </Box>
