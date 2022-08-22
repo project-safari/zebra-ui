@@ -82,6 +82,116 @@ function valuetext(value) {
     return `${value}`;
 }
 
+const NDCLUSTER3 = 
+ [
+    {
+      id: "69e00082-e426-4257-97a3-84c4f71f83eb",
+      type: "Lease",
+      labels: {
+        "system.group": "leases"
+      },
+      status: {
+        fault: "none",
+        lease: "free",
+        usedBy: "admin@zebra.project-safari.io",
+        state: "inactive",
+        createdTime: "2022-08-16T16:33:48.10341886Z"
+      },
+      duration: 14400000000000,
+      request: [
+        {
+          type: "Server",
+          group: "global",
+          name: "",
+          count: 4
+        }
+      ],
+      activationTime: "0001-01-01T00:00:00Z"
+    }
+]
+const NDCLUSTER2 = 
+ [
+    {
+      id: "69e00082-e426-4257-97a3-84c4f71f83eb",
+      type: "Lease",
+      labels: {
+        "system.group": "leases"
+      },
+      status: {
+        fault: "none",
+        lease: "free",
+        usedBy: "admin@zebra.project-safari.io",
+        state: "inactive",
+        createdTime: "2022-08-16T16:33:48.10341886Z"
+      },
+      duration: 14400000000000,
+      request: [
+        {
+          type: "Server",
+          group: "global",
+          name: "",
+          count: 4
+        }
+      ],
+      activationTime: "0001-01-01T00:00:00Z"
+    }
+]
+
+const vNDCLUSTER3 = 
+ [
+    {
+      id: "69e00082-e426-4257-97a3-84c4f71f83eb",
+      type: "Lease",
+      labels: {
+        "system.group": "leases"
+      },
+      status: {
+        fault: "none",
+        lease: "free",
+        usedBy: "admin@zebra.project-safari.io",
+        state: "inactive",
+        createdTime: "2022-08-16T16:33:48.10341886Z"
+      },
+      duration: 14400000000000,
+      request: [
+        {
+          type: "Server",
+          group: "global",
+          name: "",
+          count: 4
+        }
+      ],
+      activationTime: "0001-01-01T00:00:00Z"
+    }
+]
+const NDCLUSTER3APIC =
+[
+  {
+    id: "69e00082-e426-4257-97a3-84c4f71f83eb",
+    type: "Lease",
+    labels: {
+      "system.group": "leases"
+    },
+    status: {
+      fault: "none",
+      lease: "free",
+      usedBy: "admin@zebra.project-safari.io",
+      state: "inactive",
+      createdTime: "2022-08-16T16:33:48.10341886Z"
+    },
+    duration: 14400000000000,
+    request: [
+      {
+        type: "Server",
+        group: "global",
+        name: "",
+        count: 4
+      }
+    ],
+    activationTime: "0001-01-01T00:00:00Z"
+  }
+]
+
 // If 2 Node ND cluster is selected, send an axios request to get the lease for 2 Node ND cluster
 // If 3 Node vND cluster is selected, send an axios request to get the lease for 3 Node vND cluster
 export default function TemplateForm() {
@@ -117,32 +227,7 @@ export default function TemplateForm() {
       event.preventDefault();
     try{
       API.post(RESOURCE_URL, {
-          Lease: [
-            {
-              id: "69e00082-e426-4257-97a3-84c4f71f73eb",
-              type: "Lease",
-              labels: {
-                "system.group": "leases"
-              },
-              status: {
-                fault: "none",
-                lease: "free",
-                usedBy: "admin@zebra.project-safari.io",
-                state: "inactive",
-                createdTime: "2022-08-16T16:33:48.10341886Z"
-              },
-              duration: 14400000000000,
-              request: [
-                {
-                  type: "Server",
-                  group: "global",
-                  name: "",
-                  count: 3
-                }
-              ],
-              activationTime: "0001-01-01T00:00:00Z"
-            }
-        ]})
+          template})
       .then((response) => {
         console.log(response);
       })
@@ -167,10 +252,10 @@ export default function TemplateForm() {
               input={<BootstrapInput />}
             >
               <MenuItem value={0}>Custom Lease Request</MenuItem>
-              <MenuItem value={10}>3 Node ND Cluster</MenuItem>
-              <MenuItem value={20}>3 Node vND Cluster</MenuItem>
-              <MenuItem value={30}>2 Node nd-cluster</MenuItem>
-              <MenuItem value={40}>3 Node nd-cluster & APIC</MenuItem>
+              <MenuItem value={NDCLUSTER3}>3 Node ND Cluster</MenuItem>
+              <MenuItem value={vNDCLUSTER3}>3 Node vND Cluster</MenuItem>
+              <MenuItem value={NDCLUSTER2}>2 Node nd-cluster</MenuItem>
+              <MenuItem value={NDCLUSTER3APIC}>3 Node nd-cluster & APIC</MenuItem>
             </Select>
           </FormControl>
           {template != 0 ? (

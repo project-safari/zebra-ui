@@ -14,7 +14,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { REGISTER_URL } from '../../constants/urls';
+import { RESOURCE_URL } from '../../constants/urls';
+import API from '../../api/Api';
 import axios from 'axios';
 const theme = createTheme();
 
@@ -25,11 +26,18 @@ export default function SignUp() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     try {
-      const res = await axios.post(REGISTER_URL, data);
+      const res = await API.post(RESOURCE_URL, {
+        User: [
+          {
+            Name: data.get('name') + ' ' + data.get('lastname'),
+            Email: data.get('email'),
+            Password: data.get('password'),
+            Key: data.get('key'),
+          }
+        ]});
       console.log(res);
-    }
-    catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(error);
     }
   };
 
