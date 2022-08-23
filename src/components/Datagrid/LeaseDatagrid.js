@@ -6,6 +6,8 @@ import SecurityIcon from '@mui/icons-material/Security';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
 import WarningIcon from '@mui/icons-material/Warning';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import SettingsIcon from '@mui/icons-material/Settings';
+
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import { red, green } from '@mui/material/colors';
@@ -52,15 +54,16 @@ const columns = [
             }
         }
     },
+    { field: 'request', headerName: 'Request', width: 400, editable: true, 
+        valueGetter: (params) => JSON.stringify(params.row.request),
+    },
     { field: 'createdTime', headerName: 'Time Created', width: 150, editable: true, 
         valueGetter: (params) => params.row.status.createdTime,    
     },
-    { field: 'lease', headerName: 'Lease Availability', width: 150, editable: true,
+    { field: 'lease', headerName: 'Lease Availability', width: 125, editable: true,
         valueGetter: (params) => params.row.status.lease,
     },
-    { field: 'description', headerName: 'Description', width: 300, editable: true, 
-        valueGetter: (params) => JSON.stringify(params.row.labels),},
-    { field: 'actions', headerName: 'Actions', width: 150, editable: true,
+    { field: 'actions', headerName: 'Actions', width: 100, editable: true,
         renderCell: (params) => {
             return (
                 <Box display='flex' flexDirection='row' alignItems='center' justifyContent='center'>
@@ -76,12 +79,7 @@ const columns = [
                     </Box>
                     <Box mr={1}>
                         <IconButton aria-label="delete" > 
-                            <SecurityIcon />
-                        </IconButton> 
-                    </Box>
-                    <Box mr={1}>
-                        <IconButton aria-label="delete" > 
-                            <FileCopyIcon />
+                            <SettingsIcon />
                         </IconButton> 
                     </Box>
                 </Box>
@@ -182,10 +180,7 @@ export default function LeaseDatagrid() {
             }
             );
             setData(data.data.Lease);
-            console.log(data.data.Lease);
-            console.log(data.data.Lease.length);
             setCount(data.data.Lease.length);
-            console.log(count);
             }
         catch (e) {
             setError(e);

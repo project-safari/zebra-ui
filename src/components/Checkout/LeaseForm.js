@@ -159,6 +159,8 @@ const labels = [
     'orange',
 ];
 
+
+
 export default function LeaseForm() {
   const [template, setTemplate] = React.useState('');
   const [name, setName] = React.useState('');
@@ -230,10 +232,10 @@ export default function LeaseForm() {
                   duration: 14400000000000,
                   request: [
                       {
-                          type: 'Server',
+                          type: type,
                           group: 'global',
                           name: '',
-                          count: 2
+                          count: count
                       }
                   ],
                   activationTime: '0001-01-01T00:00:00Z'
