@@ -10,6 +10,8 @@ import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import ReplayIcon from '@mui/icons-material/Replay';
 import CloseIcon from '@mui/icons-material/Close';
 import SettingsIcon from '@mui/icons-material/Settings';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+
 export default function MediaControlCard() {
   const theme = useTheme();
 
@@ -35,7 +37,7 @@ export default function MediaControlCard() {
             <CloseIcon/>
           </IconButton>
           <IconButton aria-label="play/pause">
-            <ReplayIcon sx={{ height: 38, width: 38 }} />
+            <PlayArrowIcon sx={{ height: 38, width: 38 }} />
           </IconButton>
           <IconButton aria-label="next">
             <SettingsIcon/>

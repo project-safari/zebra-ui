@@ -242,7 +242,6 @@ export default function LeaseForm() {
               }
           ]})
       .then((response) => {
-        navigate('/');
         console.log(response);
       })
     } catch (e) {
@@ -388,7 +387,7 @@ export default function LeaseForm() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Submit
+              Submit Request
             </Button>
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
             <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>

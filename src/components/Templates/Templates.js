@@ -11,6 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import Active from '../Cards/Active';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 export default function Templates() {
   const [open, setOpen] = React.useState(false);
