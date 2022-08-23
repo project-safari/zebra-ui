@@ -103,7 +103,7 @@ export default function Checkout() {
                     onClick={handleNext}
                     sx={{ mt: 3, ml: 1 }}
                   >
-                    {activeStep === steps.length - 1 ? 'Place request' : 'Next'}
+                    {activeStep === steps.length - 1 ? 'View Status' : 'Next'}
                     {activeStep === steps.length - 1 }
                   </Button>
                 </Box>
