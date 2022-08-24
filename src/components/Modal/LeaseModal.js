@@ -23,7 +23,7 @@ export default function BasicModal() {
 
   return (
     <div>
-        <Button size="large" sx={{ml:10, mr: 34}} onClick={handleOpenLease}>View resource requests</Button>
+        <Button size="large" sx={{ml:10, mr: 34}} onClick={handleOpenLease}>View lease requests</Button>
         <Modal
           open={openLease}
           onClose={handleCloseLease}

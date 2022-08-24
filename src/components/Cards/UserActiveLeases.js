@@ -91,7 +91,7 @@ import { RESOURCE_URL } from '../../constants/urls';
                             900
                             </Typography>
                         <Typography sx={{ mr:2 }} color="text.secondary">
-                            You currently have 800 systems assigned to you. To manage or add systems, click below.
+                            You currently have 900 systems assigned to you. To manage or add systems, click below.
                         </Typography>
                     </Box>
                 </Grid>

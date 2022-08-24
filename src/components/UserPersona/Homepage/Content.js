@@ -14,6 +14,7 @@ import Active from '../../Cards/Active';
 import ResourceDatagrid from '../../Datagrid/ResourceDatagrid';
 import UserInventory from '../../Cards/UserInventory';
 import UserAnomalies from '../../Cards/UserAnomalies';
+import UserResourceGroupBreakdown from '../../Cards/UserResourceGroupBreakdown';
 import UserActiveLeases from '../../Cards/UserActiveLeases';
 import Template from '../../Cards/Template';
 
@@ -37,10 +38,13 @@ export default function Content() {
 
       <Grid container>
         <Grid item xs sx={{ p: 4.5, }}>
+          <UserAnomalies />
+        </Grid>
+        <Grid item xs sx={{ p: 4.5, }}>
           <UserInventory />
         </Grid>
         <Grid item xs sx={{ p: 4.5, }}>
-          <UserAnomalies />
+          <UserResourceGroupBreakdown />
         </Grid>
       </Grid>
 

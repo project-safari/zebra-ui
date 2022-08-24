@@ -7,12 +7,16 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
+import Icon from '@mui/material/Icon';
 import Divider from '@mui/material/Divider';
 import ResourceDatagrid from '../Datagrid/ResourceDatagrid';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import InventoryLineChart from '../Charts/LineChart';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+
 import { Grid } from '@mui/material';
+import HistoryTable from '../Datagrid/HistoryTable';
 
 
 
@@ -31,6 +35,14 @@ const card = (
                 <Typography sx={{ mr:2, }} color="text.secondary">
                     For the past 6 months, you have a 75% hardware utilization rate for your inventory.
                 </Typography>
+                  <Icon 
+                      component={TrendingUpIcon}
+                      sx={{ fontSize: 40, color: '#599E05', mt: 5 }}
+                  />
+                  <Typography sx={{ mr:2, }} color="text.secondary">
+                    5% higher than usual.
+                  </Typography>
+
             </Box>
             <Divider orientation="vertical" variant='middle' flexItem />
             <Box sx={{ display: 'inline-block', width: '70%', p:4.5, ml: 5 }}>
@@ -75,7 +87,7 @@ const card = (
           </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-              <ResourceDatagrid />  
+              <HistoryTable />  
           </CardContent>
         </Collapse>
         </Card>

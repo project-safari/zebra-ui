@@ -1,13 +1,14 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import TextField from '@mui/material/TextField';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import DirectionsIcon from '@mui/icons-material/Directions';
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
@@ -166,7 +167,8 @@ export default function LeaseForm() {
   const [name, setName] = React.useState('');
   const [description, setDescription] = React.useState('');
   const [group, setGroup] = React.useState('');
-
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
   const [label, setLabels] = React.useState([]);
   const [count, setCount] = React.useState(1);
   const [isTrue, setIsTrue] = React.useState(false);
@@ -209,8 +211,27 @@ export default function LeaseForm() {
         setLabels(value);
         console.log(value);
       };
- 
 
+    const getData = async () => {
+      try {
+        const data = await API.get(
+            RESOURCE_URL, {
+          }
+          );
+          setData(data.data.Server);
+          setResources(data.data.Server);
+          console.log(data.data.Server);
+        }
+      catch (e) {
+          setError(e);
+      }
+    }
+    useEffect(() => {
+        getData();
+    }
+    , []);
+
+    
   const makeLease = (event) => {
     event.preventDefault();
     try{
@@ -254,6 +275,7 @@ export default function LeaseForm() {
       <IconButton sx={{ p: '10px' }} aria-label="menu">
         <MenuIcon />
       </IconButton>
+    
       <InputBase
         sx={{ ml: 1, flex: 1, minWidth: 700 }}
         placeholder="Search for a Specific Resource ID"
