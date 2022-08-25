@@ -130,7 +130,7 @@ const NDCLUSTER2 =
           type: "Server",
           group: "global",
           name: "",
-          count: 4
+          count: 3
         }
       ],
       activationTime: "0001-01-01T00:00:00Z"
@@ -155,10 +155,10 @@ const vNDCLUSTER3 =
       duration: 14400000000000,
       request: [
         {
-          type: "Server",
+          type: "VM",
           group: "global",
           name: "",
-          count: 4
+          count: 3
         }
       ],
       activationTime: "0001-01-01T00:00:00Z"
@@ -254,8 +254,8 @@ export default function TemplateForm() {
               <MenuItem value={0}>Custom Lease Request</MenuItem>
               <MenuItem value={NDCLUSTER3}>3 Node ND Cluster</MenuItem>
               <MenuItem value={vNDCLUSTER3}>3 Node vND Cluster</MenuItem>
-              <MenuItem value={NDCLUSTER2}>2 Node nd-cluster</MenuItem>
-              <MenuItem value={NDCLUSTER3APIC}>3 Node nd-cluster & APIC</MenuItem>
+              <MenuItem value={NDCLUSTER2}>2 Node ND Cluster</MenuItem>
+              <MenuItem value={NDCLUSTER3APIC}>3 Node ND Cluster & APIC</MenuItem>
             </Select>
           </FormControl>
           {template != 0 ? (

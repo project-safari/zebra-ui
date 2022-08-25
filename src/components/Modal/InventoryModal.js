@@ -24,7 +24,7 @@ export default function InventoryModal() {
 
   return (
     <div>
-        <Button size="large" sx={{mr: 5, ml: 10}} onClick={handleOpenLease}>View inventory</Button>
+        <Button size="large" sx={{mr: 5, ml: 15}} onClick={handleOpenLease}>View inventory</Button>
         <Modal
           open={openLease}
           onClose={handleCloseLease}
