@@ -104,7 +104,7 @@ import {
                 />
               ))}
               <Label
-                content={<CustomLabel labelText="Resources" value={900} />}
+                content={<CustomLabel labelText="Resources" value={800} />}
                 position="center"
               />
             </Pie>

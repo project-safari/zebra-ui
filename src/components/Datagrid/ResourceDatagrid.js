@@ -68,7 +68,9 @@ const columns = [
                         <IconButton aria-label="delete" > 
                             <DeleteIcon 
                                 onClick={ async () => {
-                                    await axios.delete(RESOURCE_URL`${params.row.name}`);
+                                    await axios.delete(RESOURCE_URL,
+                                        { data: { name: params.row.name } }
+                                    );
                                     window.location.reload();
                                 }
                             } />
