@@ -18,6 +18,13 @@ import Review from './Review';
 import axios from 'axios';
 import { RESOURCE_URL } from '../../constants/urls';
 
+/*
+This form is used for creating a new lease. It is composed of two steps:
+1. Selecting a template
+2. Filling out the lease details
+
+*/
+
 const steps = ['Template or Custom', 'Lease Request'];
 
 function getStepContent(step) {

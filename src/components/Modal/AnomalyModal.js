@@ -5,6 +5,10 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import SinglePieChart from '../Charts/SinglePieChart';
 
+/*
+This is the Modal being called when clicked on the show anomaly button.
+*/
+
 const style = {
   position: 'absolute',
   top: '50%',

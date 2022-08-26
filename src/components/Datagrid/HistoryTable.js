@@ -14,6 +14,11 @@ import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
+/*
+This table is used for demonstrating the resource usage breakdown by month
+and further the breadown of which users are using what resources.
+*/
+
 function createData(name, calories, fat, carbs, protein, price) {
   return {
     name,

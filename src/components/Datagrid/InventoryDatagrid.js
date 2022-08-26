@@ -18,6 +18,12 @@ import API from '../../api/Api';
 import axios from 'axios';
 import { get } from 'mongoose';
 
+
+/*
+This is the datatable used to do CRUD operations on the inventory.
+*/
+
+
 function getChipProps(params){
     if (params.value === "inactive") {
       return {

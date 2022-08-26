@@ -17,6 +17,9 @@ import { Grid, Icon } from '@mui/material';
 import TypeTable from '../Datagrid/TypeTable';
 import CustomPieChart from '../Charts/LabelPieChart';
 
+/*
+This card is used for demonstrating the resource breakdown of the user's inventory.
+*/
 
 const card = (
     <React.Fragment>

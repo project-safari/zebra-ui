@@ -5,6 +5,10 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import InventoryDatagrid from '../Datagrid/InventoryDatagrid';
 
+/*
+This is the modal being called that should show the inventory datagrid.
+*/
+
 const style = {
   position: 'absolute',
   top: '50%',

@@ -4,6 +4,11 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import LeaseDatagrid from '../Datagrid/LeaseDatagrid';
+
+/*
+This modal displays the lease datagrid when the show leases button is clicked.
+*/
+
 const style = {
   position: 'absolute',
   top: '50%',

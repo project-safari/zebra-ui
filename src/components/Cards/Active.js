@@ -12,6 +12,15 @@ import CloseIcon from '@mui/icons-material/Close';
 import SettingsIcon from '@mui/icons-material/Settings';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
+/*
+This card used as the zebra favorited template
+Is a work in progress mainly used as a Proof of Concept for the Template Marketplace
+Idea is that these cards should be an easy way for the user to re-up there favorite lease templates
+This would be accomplished by clicking the play button
+In the future the User would be able to search for other cards as well.
+*/
+
+
 export default function MediaControlCard() {
   const theme = useTheme();
 

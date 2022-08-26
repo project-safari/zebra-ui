@@ -20,6 +20,10 @@ import axios from 'axios';
 const theme = createTheme();
 
 
+/*
+This is the register page for the application.
+*/
+
 
 export default function SignUp() {
   const handleSubmit = async(event) => {

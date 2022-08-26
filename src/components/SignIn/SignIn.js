@@ -17,6 +17,11 @@ import { LOGIN_URL } from '../../constants/urls';
 import axios from 'axios';
 import API from '../../api/Api';
 
+/*
+This is the Login page for the application.
+*/
+
+
 const theme = createTheme();
 
 export default function SignIn() {

@@ -19,7 +19,10 @@ import InventoryModal from '../Modal/InventoryModal';
 import API from '../../api/Api';
 import { RESOURCE_URL } from '../../constants/urls';
 
-
+/*
+This card is used for displaying the active leases the user has, 
+inventory under management, and any system faults.
+*/
 
 
 

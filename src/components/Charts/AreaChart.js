@@ -1,6 +1,9 @@
 import { AreaChart, linearGradient, CartesianGrid, Area, XAxis, YAxis, Tooltip } from "recharts";
 import React from "react";
 
+/*
+This chart is used for displaying the active leases the user has
+*/
 const data = [
     {
       "name": "07/31",
