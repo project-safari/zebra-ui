@@ -30,6 +30,15 @@ import axios from 'axios';
 import { TypeFlags } from 'typescript';
 import API from '../../api/Api';
 
+/*
+This form is used in order to create a custom lease request
+It is the second option in the checkout page
+The form has a searchbar to search for resource IDs
+The form has a slider to select the count of the lease
+The form has a dropdown to select the lease types
+The form has a dropdown to select the lease labels and groupings
+*/
+
 const marks = [
     {
         value: 0,

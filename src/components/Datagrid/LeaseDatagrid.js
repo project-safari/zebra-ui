@@ -17,6 +17,9 @@ import { RESOURCE_URL } from '../../constants/urls';
 import API from '../../api/Api';
 import axios from 'axios';
 
+/*
+This datatable is used to do CRUD operations only for lease resources
+*/
 
 
 function getChipProps(params){

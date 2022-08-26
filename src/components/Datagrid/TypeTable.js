@@ -14,6 +14,12 @@ import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
+/*
+This is an expandable table that shows the breadown of leases by resource type,
+and gives important summary information about the resource types.
+The table can be expanded further to show what resource groups are being used by which users.
+*/
+
 function createData(name, calories, fat, carbs, protein, price) {
   return {
     name,

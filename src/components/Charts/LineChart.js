@@ -2,6 +2,10 @@ import { LineChart, XAxis, YAxis, Tooltip, Legend, Area, Bar, Line, CartesianGri
 import React from "react";
 import { Typography } from "@mui/material/Typography";
 
+/*
+This chart is used to display hardware utilization of the user's inventory
+*/
+
 const data = [
     {
         "name": "January",

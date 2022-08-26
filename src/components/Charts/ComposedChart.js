@@ -1,6 +1,11 @@
 import { ComposedChart, XAxis, YAxis, Tooltip, Legend, Area, Bar, Line, CartesianGrid } from "recharts";
 import React from "react";
 
+/*
+This chart is used for displaying the Zebra system traffic and invetigating anonomalies in the system
+*/
+
+
 const data = [
     {
       "name": "4:00 A.M.",

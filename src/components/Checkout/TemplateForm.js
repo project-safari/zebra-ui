@@ -21,6 +21,11 @@ import InputBase from '@mui/material/InputBase';
 import API from '../../api/Api';
 import { RESOURCE_URL } from '../../constants/urls';
 
+/*
+This form is used for selecting a template to create a lease from.
+*/
+
+
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {

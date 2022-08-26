@@ -18,7 +18,9 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import { Grid } from '@mui/material';
 import HistoryTable from '../Datagrid/HistoryTable';
 
-
+/*
+This card is used for demonstrating the hardware utilization of the user's inventory.
+*/
 
 const card = (
     <React.Fragment>

@@ -9,6 +9,10 @@ import Content from './Homepage/Content';
 import Header from './Header';
 import Navigator from './Navigator';
 
+/*
+This is the Home page for the application rendering the Header, Navigator, and Content components.
+*/
+
 let theme = createTheme({
   palette: {
     primary: {

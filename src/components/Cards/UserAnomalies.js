@@ -17,7 +17,9 @@ import Typography from '@mui/material/Typography';
 import ResourceComposedChart from '../Charts/ComposedChart';
 import { Grid } from '@mui/material';
 
-
+/*
+This card displays the daily advisories and suggests potential reccomenations
+*/
 
 const card = (
     <React.Fragment>

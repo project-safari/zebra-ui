@@ -8,6 +8,10 @@ import {
   } from "recharts";
   import Grid from "@mui/material/Grid";
 
+  /*
+  This chart is used for displaying the Zebra system resource breakdown
+  */
+
   const data01 = [
     { name: "Datacenters", value: 100 },
     { name: "IPAddressPool", value: 100 },
