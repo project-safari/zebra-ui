@@ -14,9 +14,10 @@ import Chip from '@mui/material/Chip';
 import renderCellExpand from '../../utils/renderCellExpand';
 import AddIcon from '@mui/icons-material/Add';
 import { RESOURCE_URL } from '../../constants/urls';
-import API from '../../api/Api';
+import API from '../../api/Api'; 
 import axios from 'axios';
 import { get } from 'mongoose';
+import { Navigate } from "react-router-dom";
 
 
 /*
@@ -44,12 +45,14 @@ function getChipProps(params){
     }
   }
 
-
 const columns = [
     { field: 'id', headerName: 'Resource ID', width: 150, editable: true },
-    { field: 'type', headerName: 'Resource Type', width: 150, editable: true, },
+    { field: 'type', headerName: 'Resource Type', width: 150, editable: true, 
+        valueGetter: (params) => (params.row?.type?.description)},
     { field: 'state', headerName: 'Status', width: 150, editable: true, 
-        valueGetter: (params) => params.row.status.state,
+        valueGetter: (params) => {
+            (params.row?.status || null)
+        },
         renderCell: (params) => {
             if (params.value === 'active') {
                 return <Chip variant='outlined' size='small' {...getChipProps(params)} />;
@@ -61,13 +64,13 @@ const columns = [
         }
     },
     { field: 'lease', headerName: 'Lease Availability', width: 150, editable: true,
-    valueGetter: (params) => params.row.status.lease,
+    valueGetter: (params) => (params.row?.status?.lease || null),
     },
     { field: 'createdTime', headerName: 'Time Created', width: 150, editable: true, 
-        valueGetter: (params) => params.row.status.createdTime,    
+        valueGetter: (params) => (params.row?.creationTime || null),    
     },
     { field: 'description', headerName: 'Description', width: 300, editable: true, 
-    valueGetter: (params) => JSON.stringify(params.row.labels),},
+    valueGetter: (params) => (params.row?.name),},
     { field: 'actions', headerName: 'Actions', width: 150, editable: true,
     renderCell: (params) => {
         return (
@@ -76,7 +79,14 @@ const columns = [
                     <IconButton aria-label="delete" > 
                         <DeleteIcon 
                             onClick={ async () => {
-                                await axios.delete(RESOURCE_URL);
+                                const url = RESOURCE_URL + '/' + params.id;
+                                console.log(url);
+                                resp = await API.delete(url);
+                                if (resp) {
+                                    resp.then(
+                                        console.log(resp)
+                                    )
+                                }
                                 window.location.reload();
                             }
                         } />
@@ -84,7 +94,17 @@ const columns = [
                 </Box>
                 <Box mr={1}>
                     <IconButton aria-label="delete" > 
-                        <AddIcon />
+                        <AddIcon 
+                        onClick={ async () => {
+                            resp = await API.post(RESOURCE_URL);
+                            if (resp) {
+                                resp.then(
+                                    console.log(resp)
+                                )
+                            }
+                            window.location.reload();
+                        }
+                        }/>
                     </IconButton> 
                 </Box>
                 <Box mr={1}>
@@ -196,9 +216,14 @@ export default function InventoryDatagrid() {
             const data = await API.get(
                 RESOURCE_URL, 
             );
-            setDatacenterData(data.data.Datacenter);
-            console.log(data.data.Datacenter)
-            }
+            setDatacenterData(data.data['dc.datacenter'].map((row) => {
+                return {...row.meta, 'status' : row.status};
+            }));
+            
+            //console.log(data.data['dc.datacenter'].map((row) => {
+            //    return row.meta;
+            //}));
+        }
         catch (e) {
             setError(e);
             setLoading(false);
@@ -211,8 +236,13 @@ export default function InventoryDatagrid() {
             const data = await API.get(
                 RESOURCE_URL, 
             );
-            setIpaddresspoolData(data.data.IPAddressPool);
-            console.log(data.data.IPAddressPool)
+            console.log(data);
+            setIpaddresspoolData(data.data['network.ipAddressPool'].map((row) => {
+                return {...row.meta, 'status' : row.status};
+            }));
+            //console.log(data.data['network.ipAddressPool'].map((row) => {
+            //    return row.meta;
+            //}))
             }
         catch (e) {
             setError(e);
@@ -226,8 +256,12 @@ export default function InventoryDatagrid() {
             const data = await API.get(
                 RESOURCE_URL, 
             );
-            setRackData(data.data.Rack);
-            console.log(data.data.Rack)
+            setRackData(data.data['dc.rack'].map((row) => {
+                return {...row.meta, 'status' : row.status};
+            }));
+            //console.log(data.data['dc.rack'].map((row) => {
+            //   return row.meta;
+            //}))
             }
         catch (e) {
             setError(e);
@@ -242,8 +276,12 @@ export default function InventoryDatagrid() {
             const data = await API.get(
                 RESOURCE_URL, 
             );
-            setLabData(data.data.Lab);
-            console.log(data.data.Lab)
+            setLabData(data.data['dc.lab'].map((row) => {
+                return {...row.meta, 'status' : row.status};
+            }));
+            //console.log(data.data['dc.lab'].map((row) => {
+            //    return row.meta;
+            //}));
             }
         catch (e) {
             setError(e);
@@ -257,8 +295,12 @@ export default function InventoryDatagrid() {
             const data = await API.get(
                 RESOURCE_URL, 
             );
-            setLeaseData(data.data.Datacenter);
-            console.log(data.data.Datacenter)
+            setLeaseData(data.data['dc.datacenter'].map((row) => {
+                return {...row.meta, 'status' : row.status};
+            }));
+            //console.log(data.data['dc.datacenter'].map((row) => {
+            //    return row.meta;
+            //}));
             }
         catch (e) {
             setError(e);
@@ -271,8 +313,12 @@ export default function InventoryDatagrid() {
             const data = await API.get(
                 RESOURCE_URL,
             );
-            setServerData(data.data.Server);
-            console.log(data.data.Server)
+            setServerData(data.data['compute.server'].map((row) => {
+                return {...row.meta, 'status' : row.status};
+            }));
+            //console.log(data.data['compute.server'].map((row) => {
+            //    return row.meta;
+            //}));
             }
         catch (e) {
             setError(e);
@@ -285,8 +331,12 @@ export default function InventoryDatagrid() {
             const data = await API.get(
                 RESOURCE_URL,
             );
-            setSwitchData(data.data.Switch);
-            console.log(data.data.Switch)
+            setSwitchData(data.data['network.switch'].map((row) => {
+                return {...row.meta, 'status' : row.status};
+            }));
+            //console.log(data.data['network.switch'].map((row) => {
+            //    return row.meta;
+            //}))
             }
         catch (e) {
             setError(e);
@@ -299,8 +349,12 @@ export default function InventoryDatagrid() {
             const data = await API.get(
                 RESOURCE_URL,
             );
-            setVlanData(data.data.VLANPool);
-            console.log(data.data.VLANPool)
+            setVlanData(data.data['network.vlanPool'].map((row) => {
+                return {...row.meta, 'status' : row.status};
+            }));
+            //console.log(data.data['network.vlanPool'].map((row) => {
+            //    return row.meta;
+            //}));
             }
         catch (e) {
             setError(e);
@@ -313,8 +367,12 @@ export default function InventoryDatagrid() {
             const data = await API.get(
                 RESOURCE_URL,
             );
-            setVmData(data.data.VM);
-            console.log(data.data.VM)
+            setVmData(data.data['compute.vm'].map((row) => {
+                return {...row.meta, 'status' : row.status};
+            }));
+            //console.log(data.data['compute.vm'].map((row) => {
+            //    return row.meta;
+            //}));
             }
         catch (e) {
             setError(e);
@@ -340,15 +398,20 @@ export default function InventoryDatagrid() {
         return <div>Loading...</div>;
     }
     if (error) {
+        if (error.response.status === 401){
+            localStorage.removeItem("authTokens");
+            return <Navigate to='/login' />
+        }
         return <div>Error: {error.message}</div>;
     }
+    //console.log('dataCenterData: ', datacenterData);
     const testData = datacenterData.concat(ipaddresspoolData, rackData, labData, leaseData, serverData, switchData, vlanData, vmData);
-  return (
-    <Box sx={{ height: 800, width: '100%' }}>
+    return (
+    <Box sx={{ height: 600, width: '100%' }}>
       <DataGrid
         rows={ testData }
         columns={columns}
-        pageSize={50}
+        pageSize={20}
         rowsPerPageOptions={[20]}
         checkboxSelection
         disableSelectionOnClick

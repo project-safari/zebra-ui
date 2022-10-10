@@ -13,7 +13,7 @@ import IconButton from '@mui/material/IconButton';
 import { red, green } from '@mui/material/colors';
 import Chip from '@mui/material/Chip';
 import renderCellExpand from '../../utils/renderCellExpand';
-import { RESOURCE_URL } from '../../constants/urls';
+import { LEASE_URL, RESOURCE_URL } from '../../constants/urls';
 import API from '../../api/Api';
 import axios from 'axios';
 
@@ -21,7 +21,7 @@ import axios from 'axios';
 This datatable is used to do CRUD operations only for lease resources
 */
 
-
+ 
 function getChipProps(params){
     if (params.value === "inactive") {
       return {
@@ -46,7 +46,7 @@ const columns = [
     { field: 'id', headerName: 'Lease ID', width: 150, editable: true },
     { field: 'type', headerName: 'Resource Type', width: 150, editable: true, },
     { field: 'state', headerName: 'Status', width: 150, editable: true, 
-        valueGetter: (params) => params.row.status.state,
+        valueGetter: (params) => (params.row.status.state),
         renderCell: (params) => {
             if (params.value === 'active') {
                 return <Chip variant='outlined' size='small' {...getChipProps(params)} />;
@@ -61,10 +61,10 @@ const columns = [
         valueGetter: (params) => JSON.stringify(params.row.request),
     },
     { field: 'createdTime', headerName: 'Time Created', width: 150, editable: true, 
-        valueGetter: (params) => params.row.status.createdTime,    
+        valueGetter: (params) => (params.row.status.createdTime),    
     },
     { field: 'lease', headerName: 'Lease Availability', width: 125, editable: true,
-        valueGetter: (params) => params.row.status.lease,
+        valueGetter: (params) => (params.row.status.lease),
     },
     { field: 'actions', headerName: 'Actions', width: 100, editable: true,
         renderCell: (params) => {
@@ -76,7 +76,8 @@ const columns = [
                                 onClick={ async () => {
                                     await axios.delete(RESOURCE_URL,
                                         { data: { name: params.row.name } }
-                                    );                                }
+                                    );        
+                                }
                             } />
                         </IconButton> 
                     </Box>
@@ -135,6 +136,7 @@ export default function LeaseDatagrid() {
         const url = `${RESOURCE_URL}${id}/status`;
         const response = await axios.put(url);
         if (response.status === 200) {
+            console.log(response);
             const newRow = {
                 id: response.data.id,
                 type: response.data.type,
@@ -182,6 +184,7 @@ export default function LeaseDatagrid() {
                 RESOURCE_URL, {
             }
             );
+            console.log(data);
             setData(data.data.Lease);
             setCount(data.data.Lease.length);
             }
@@ -194,6 +197,7 @@ export default function LeaseDatagrid() {
     useEffect(() => {
         setLoading(true);
         getData();
+        console.log(data);
     }
     , []);
     if (loading) {
@@ -202,7 +206,6 @@ export default function LeaseDatagrid() {
     if (error) {
         return <div>Error: {error.message}</div>;
     }
-
 
 
   return (

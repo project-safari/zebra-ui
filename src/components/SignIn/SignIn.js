@@ -28,7 +28,7 @@ export default function SignIn() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [role, setRole] = useState(null);
-
+ 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -41,6 +41,8 @@ export default function SignIn() {
         navigate('/');
         setUser(response.data.email);
         setRole(response.data.role);
+
+        localStorage.setItem("authTokens", JSON.stringify(response.data.jwt));
 
         console.log(response);
         console.log(user);
