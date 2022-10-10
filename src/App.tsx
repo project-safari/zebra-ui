@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -18,8 +18,11 @@ import Link from '@mui/material/Link';
 import Session from './components/Session/Session';
 import axios from 'axios';
 import RequireAuth from './utils/PrivateRoute';
+import { Inventory } from '@mui/icons-material';
+import InventoryHome from './components/Inventory/InventoryHome';
 
 export default function App() {
+
   return (
     <Router>
         <Routes>
@@ -41,6 +44,16 @@ export default function App() {
           <Route path="/templates" element={
             <RequireAuth redirectTo='/login'>
               <TemplateHome />
+            </RequireAuth>
+          } />
+          <Route path="/inventory" element={
+            <RequireAuth redirectTo='/login'>
+              <InventoryHome />
+            </RequireAuth>
+          } />
+          <Route path="/refresh" element={
+            <RequireAuth redirectTo='/login'>
+              <SignIn />
             </RequireAuth>
           } />
           <Route path='/datagrid' element={<ResourceDatagrid/>} />
