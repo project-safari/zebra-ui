@@ -27,7 +27,6 @@ import InputBase from '@mui/material/InputBase';
 import { LEASE_URL, RESOURCE_URL } from '../../constants/urls';
 import  { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { TypeFlags } from 'typescript';
 import API from '../../api/Api';
 
 /*
