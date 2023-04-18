@@ -12,9 +12,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import Active from '../../Cards/Active';
 import ResourceDatagrid from '../../Datagrid/ResourceDatagrid';
-//import UserInventory from '../../Cards/UserInventory';
-//import UserAnomalies from '../../Cards/UserAnomalies';
-//import UserResourceGroupBreakdown from '../../Cards/UserResourceGroupBreakdown';
 import UserActiveLeases from '../../Cards/UserActiveLeases';
 import Template from '../../Cards/Template';
 

@@ -20,64 +20,6 @@ import { Grid } from '@mui/material';
 /*
 This card displays the daily advisories and suggests potential reccomenations
 */
-/*
-const card = (
-    <React.Fragment>
-      <CardContent>
-        <Grid container spacing={0}>
-            <Box sx={{ display: 'inline-block', width: '25%', p: 1.5,}}>
-
-                <Typography sx={{ fontSize: 25, fontWeight: 1000 }} color="#065073" gutterBottom >
-                Zebra System Advisories
-                </Typography>
-                    <Typography sx={{ fontSize: 100, fontWeight: 1000, ml: 3, mt: 0.5,}} color="#B63722" gutterBottom >
-                    4
-                    </Typography>
-                <Typography sx={{ mr:2 }} color="text.secondary">
-                    4 total advisories, 1 critical, 1 warning, 2 informational.
-                </Typography>
-            </Box>
-            <Divider orientation="vertical" variant='middle' flexItem sx={{ml:5}}/>
-            <Box sx={{ display: 'inline-block', width: '70%', }}>
-                <Typography sx={{ fontSize: 25, fontWeight: 1000, ml:10, mt: 1.5 }} color="#065073" gutterBottom >
-                Suggested Actions
-                </Typography>
-                <Typography sx={{ fontSize: 20, fontWeight: 500, ml:10, mt: 1.5 }} color="text.secondary" gutterBottom >
-                <IconButton sx={{ px:2, py: 3, color:'#B63722', }}>
-                    <TrendingUpIcon sx={{fontSize: 40}} />
-                </IconButton>
-                Trending Higher
-                </Typography>
-                <Typography sx={{ fontSize: 15, fontWeight: 250, ml:19, }} color="text.secondary" gutterBottom >
-                 The number of daily advisories is higher than average.
-                </Typography>
-                <Typography sx={{ fontSize: 20, fontWeight: 500, ml:10, mt: 1.5 }} color="text.secondary" gutterBottom >
-                <IconButton sx={{ px:2, py: 3, color:'#599E05'}}>
-                    <UpgradeIcon sx={{fontSize: 40}}/>
-                </IconButton>
-                Upgrades Available
-                </Typography>
-                <Typography sx={{ fontSize: 15, fontWeight: 250, ml:19, }} color="text.secondary" gutterBottom >
-                 Make sure your setups are running the latest software.
-                </Typography>
-                <Typography sx={{ fontSize: 20, fontWeight: 500, ml:10, mt: 1.5, }} color="text.secondary" gutterBottom >
-                <IconButton sx={{ px:2, py: 3, color:'#D9B216'}}>
-                    <SyncIcon sx={{fontSize: 40}}/>
-                </IconButton>
-                Restart the Physical Setups
-                </Typography>
-                <Typography sx={{ fontSize: 15, fontWeight: 250, ml:19, }} color="text.secondary" gutterBottom >
-                 Could be an error with the setup wiring.
-                </Typography>
-            </Box>
-        </Grid>
-      </CardContent>
-      <CardActions>
-        <Button size="large">View all advisories</Button>
-      </CardActions>
-    </React.Fragment>
-  );
-*/
   const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
     return <IconButton {...other} />;
