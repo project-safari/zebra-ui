@@ -20,7 +20,7 @@ import { Grid } from '@mui/material';
 /*
 This card displays the daily advisories and suggests potential reccomenations
 */
-
+/*
 const card = (
     <React.Fragment>
       <CardContent>
@@ -77,7 +77,7 @@ const card = (
       </CardActions>
     </React.Fragment>
   );
-
+*/
   const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
     return <IconButton {...other} />;
@@ -98,7 +98,7 @@ const card = (
     return (
       <Box sx={{ minWidth: 275 }}>
         <Card variant="outlined">
-          {card}
+          {}
             <CardActions disableSpacing>
               <ExpandMore
               expand={expanded}

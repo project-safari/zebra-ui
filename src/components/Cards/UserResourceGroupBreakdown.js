@@ -20,7 +20,7 @@ import CustomPieChart from '../Charts/LabelPieChart';
 /*
 This card is used for demonstrating the resource breakdown of the user's inventory.
 */
-
+/*
 const card = (
     <React.Fragment>
       <CardContent>
@@ -48,7 +48,7 @@ const card = (
 
     </React.Fragment>
   );
-
+*/
   const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
     return <IconButton {...other} />;
@@ -69,7 +69,7 @@ const card = (
     return (
       <Box sx={{ minWidth: 275 }}>
         <Card variant="outlined">
-          {card}
+          {}
             <CardActions disableSpacing>
               <ExpandMore
               expand={expanded}
