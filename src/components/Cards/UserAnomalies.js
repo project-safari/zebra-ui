@@ -22,7 +22,26 @@ This card displays the daily advisories and suggests potential reccomenations
 */
 
 let advisoryCount;
-advisoryCount = 0;
+advisoryCount = 4;
+/*
+const  [advisoryCount, adviceCount]= useState(0);
+const getAdvisory = async () => {
+  try {
+      const data = await API.get(
+          RESOURCE_URL, {
+      }
+      );
+      setData(data.data.AnomalyModal);
+      console.log(data.data.AnomalyModal.length);
+      adviceCount(data.data.AnomalyModal.length);
+      console.log(anomalyCount);
+      }
+  catch (e) {
+      setError(e);
+      setLoading(false);
+  }
+  setLoading(false);
+}*/
 
 const card = (
     <React.Fragment>

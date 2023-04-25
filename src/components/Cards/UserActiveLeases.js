@@ -34,8 +34,8 @@ let resNumber;
 
 resNumber = InventoryDatagrid.data
   
-let anomalyCount;
-anomalyCount = 0;
+// let anomalyCount;
+// anomalyCount = 0;
 
   export default function Chart() {
     const [count, setCount]= useState(0);
@@ -44,6 +44,27 @@ anomalyCount = 0;
     const [loading, setLoading] = useState(false);
 
     const  [invCount, resCount]= useState(0);
+    
+    const  [anomalyCount, badCount]= useState(0);
+
+
+    const getAnomaly = async () => {
+      try {
+          const data = await API.get(
+              RESOURCE_URL, {
+          }
+          );
+          setData(data.data.AnomalyModal);
+          console.log(data.data.AnomalyModal.length);
+          badCount(data.data.AnomalyModal.length);
+          console.log(anomalyCount);
+          }
+      catch (e) {
+          setError(e);
+          setLoading(false);
+      }
+      setLoading(false);
+    }
 
     const getRes = async () => {
       try {
@@ -53,7 +74,7 @@ anomalyCount = 0;
           );
           setData(data.data.InventoryModal);
           console.log(data.data.InventoryModal.length);
-          invCount(data.data.InventoryModal.length);
+          resCount(data.data.InventoryModal.length);
           console.log(invCount);
           }
       catch (e) {
@@ -83,7 +104,8 @@ anomalyCount = 0;
     useEffect(() => {
         setLoading(true);
         getData();
-        getRes()
+        getRes();
+        getAnomaly();
     }
     , []);
     
