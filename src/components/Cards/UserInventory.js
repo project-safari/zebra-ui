@@ -32,17 +32,15 @@ const card = (
                 Zebra System Management
                 </Typography>
                     <Typography sx={{ fontSize: 50, fontWeight: 1000 }} color="#599E05" gutterBottom >
-                    Healthy
+                 {/*   Healthy */}
                     </Typography>
                 <Typography sx={{ mr:2, }} color="text.secondary">
-                    For the past 6 months, you have a 75% hardware utilization rate for your inventory.
                 </Typography>
                   <Icon 
                       component={TrendingUpIcon}
                       sx={{ fontSize: 40, color: '#599E05', mt: 5 }}
                   />
                   <Typography sx={{ mr:2, }} color="text.secondary">
-                    5% higher than usual.
                   </Typography>
 
             </Box>

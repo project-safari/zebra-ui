@@ -21,6 +21,9 @@ import { Grid } from '@mui/material';
 This card displays the daily advisories and suggests potential reccomenations
 */
 
+let advisoryCount;
+advisoryCount = 0;
+
 const card = (
     <React.Fragment>
       <CardContent>
@@ -31,10 +34,10 @@ const card = (
                 Zebra System Advisories
                 </Typography>
                     <Typography sx={{ fontSize: 100, fontWeight: 1000, ml: 3, mt: 0.5,}} color="#B63722" gutterBottom >
-                    4
+                    {advisoryCount}
                     </Typography>
                 <Typography sx={{ mr:2 }} color="text.secondary">
-                    4 total advisories, 1 critical, 1 warning, 2 informational.
+                    {advisoryCount} total advisories, _ critical, _ warning, _ informational.
                 </Typography>
             </Box>
             <Divider orientation="vertical" variant='middle' flexItem sx={{ml:5}}/>
