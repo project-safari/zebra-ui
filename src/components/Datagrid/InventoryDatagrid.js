@@ -209,188 +209,45 @@ export default function InventoryDatagrid() {
     }
         , [data]);
 
-
-    const getDatacenterData = async () => {
-        try {
-            const data = await API.get(
-                RESOURCE_URL, 
-            );
-            setDatacenterData(data.data['dc.datacenter'].map((row) => {
+    const setResourceData = async (data, resourceSetter, resourceType) => {
+        if (data && data.data && data.data[resourceType]) {
+            resourceSetter(data.data[resourceType].map((row) => {
                 return {...row.meta, 'status' : row.status};
             }));
-            
-            //console.log(data.data['dc.datacenter'].map((row) => {
-            //    return row.meta;
-            //}));
         }
-        catch (e) {
-            setError(e);
-            setLoading(false);
-        }
-        setLoading(false);
     }
 
-    const getIPAddressPoolData = async () => {
-        try {
-            const data = await API.get(
-                RESOURCE_URL, 
-            );
-            console.log(data);
-            setIpaddresspoolData(data.data['network.ipAddressPool'].map((row) => {
-                return {...row.meta, 'status' : row.status};
-            }));
-            //console.log(data.data['network.ipAddressPool'].map((row) => {
-            //    return row.meta;
-            //}))
-            }
-        catch (e) {
-            setError(e);
-            setLoading(false);
-        }
-        setLoading(false);
-    }
-
-    const getRackData = async () => {
-        try {
-            const data = await API.get(
-                RESOURCE_URL, 
-            );
-            setRackData(data.data['dc.rack'].map((row) => {
-                return {...row.meta, 'status' : row.status};
-            }));
-            //console.log(data.data['dc.rack'].map((row) => {
-            //   return row.meta;
-            //}))
-            }
-        catch (e) {
-            setError(e);
-            setLoading(false);
-        }
-        setLoading(false);
-    }
-
-
-    const getLabData = async () => {
-        try {
-            const data = await API.get(
-                RESOURCE_URL, 
-            );
-            setLabData(data.data['dc.lab'].map((row) => {
-                return {...row.meta, 'status' : row.status};
-            }));
-            //console.log(data.data['dc.lab'].map((row) => {
-            //    return row.meta;
-            //}));
-            }
-        catch (e) {
-            setError(e);
-            setLoading(false);
-        }
-        setLoading(false);
-    }
-
-    const getLeaseData = async () => {
-        try {
-            const data = await API.get(
-                RESOURCE_URL, 
-            );
-            setLeaseData(data.data['dc.datacenter'].map((row) => {
-                return {...row.meta, 'status' : row.status};
-            }));
-            //console.log(data.data['dc.datacenter'].map((row) => {
-            //    return row.meta;
-            //}));
-            }
-        catch (e) {
-            setError(e);
-            setLoading(false);
-        }
-        setLoading(false);
-    }
-    const getServerData = async () => {
+    const fetchAllData = async () => {
         try {
             const data = await API.get(
                 RESOURCE_URL,
             );
-            setServerData(data.data['compute.server'].map((row) => {
-                return {...row.meta, 'status' : row.status};
-            }));
-            //console.log(data.data['compute.server'].map((row) => {
-            //    return row.meta;
-            //}));
-            }
+
+            setResourceData(data, setDatacenterData, 'dc.datacenter')
+            setResourceData(data, setIpaddresspoolData, 'network.ipAddressPool')
+            setResourceData(data, setRackData, 'dc.rack')
+            setResourceData(data, setLabData, 'dc.lab')
+            setResourceData(data, setLeaseData, 'dc.datacenter')
+            setResourceData(data, setServerData, 'compute.server')
+            setResourceData(data, setSwitchData, 'network.switch')
+            setResourceData(data, setVlanData, 'network.vlanPool')
+            setResourceData(data, setVmData, 'compute.vm')
+        }
         catch (e) {
             setError(e);
             setLoading(false);
         }
-        setLoading(false);
-    }
-    const getSwitchData = async () => {
-        try {
-            const data = await API.get(
-                RESOURCE_URL,
-            );
-            setSwitchData(data.data['network.switch'].map((row) => {
-                return {...row.meta, 'status' : row.status};
-            }));
-            //console.log(data.data['network.switch'].map((row) => {
-            //    return row.meta;
-            //}))
-            }
-        catch (e) {
-            setError(e);
+        finally {
             setLoading(false);
         }
-        setLoading(false);
+        
+        getResourceData()
     }
-    const getVlanData = async () => {
-        try {
-            const data = await API.get(
-                RESOURCE_URL,
-            );
-            setVlanData(data.data['network.vlanPool'].map((row) => {
-                return {...row.meta, 'status' : row.status};
-            }));
-            //console.log(data.data['network.vlanPool'].map((row) => {
-            //    return row.meta;
-            //}));
-            }
-        catch (e) {
-            setError(e);
-            setLoading(false);
-        }
-        setLoading(false);
-    }
-    const getVmData = async () => {
-        try {
-            const data = await API.get(
-                RESOURCE_URL,
-            );
-            setVmData(data.data['compute.vm'].map((row) => {
-                return {...row.meta, 'status' : row.status};
-            }));
-            //console.log(data.data['compute.vm'].map((row) => {
-            //    return row.meta;
-            //}));
-            }
-        catch (e) {
-            setError(e);
-            setLoading(false);
-        }
-        setLoading(false);
-    }
-    
+
     useEffect(() => {
         setLoading(true);
-        getDatacenterData();
-        getIPAddressPoolData();
-        getLabData();
-        getLeaseData();
-        getRackData();
-        getServerData();
-        getSwitchData();
-        getVlanData();
-        getVmData();
+        fetchAllData()
+        setLoading(false);
     }
     , []);
     if (loading) {
