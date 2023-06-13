@@ -78,7 +78,7 @@ const columns = [
                     <IconButton aria-label="delete" > 
                         <DeleteIcon 
                             onClick={ async () => {
-                                const url = RESOURCE_URL + '/' + params.id;
+                                const url = RESOURCE_URL + '?ids=' + params.id;
                                 console.log(url);
                                 resp = await API.delete(url);
                                 if (resp) {
