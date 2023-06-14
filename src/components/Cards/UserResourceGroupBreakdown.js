@@ -20,35 +20,6 @@ import CustomPieChart from '../Charts/LabelPieChart';
 /*
 This card is used for demonstrating the resource breakdown of the user's inventory.
 */
-
-const card = (
-    <React.Fragment>
-      <CardContent>
-        <Grid container spacing={0}>
-            <Box sx={{ display: 'inline-block', width: '25%', p: 1.5,}}>
-
-                <Typography sx={{ fontSize: 20, fontWeight: 1000 }} color="#065073" gutterBottom >
-                Zebra Resource Breakdown
-                </Typography>
-                    <Typography sx={{ fontSize: 50, fontWeight: 1000 }} color="#599E05" gutterBottom >
-                    8 Types
-                    </Typography>
-
-                <Typography sx={{ mr:2, }} color="text.secondary">
-                    Expand the card for a further breakdown of your resources.
-                </Typography>
-
-            </Box>
-            <Divider orientation="vertical" variant='middle' flexItem />
-            <Box sx={{ display: 'inline-block', width: '70%', p:4.5, ml: 5 }}>
-                <CustomPieChart />
-            </Box>
-        </Grid>
-      </CardContent>
-
-    </React.Fragment>
-  );
-
   const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
     return <IconButton {...other} />;
@@ -69,7 +40,6 @@ const card = (
     return (
       <Box sx={{ minWidth: 275 }}>
         <Card variant="outlined">
-          {card}
             <CardActions disableSpacing>
               <ExpandMore
               expand={expanded}

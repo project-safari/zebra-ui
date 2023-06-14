@@ -12,9 +12,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import Active from '../../Cards/Active';
 import ResourceDatagrid from '../../Datagrid/ResourceDatagrid';
-import UserInventory from '../../Cards/UserInventory';
-import UserAnomalies from '../../Cards/UserAnomalies';
-import UserResourceGroupBreakdown from '../../Cards/UserResourceGroupBreakdown';
 import UserActiveLeases from '../../Cards/UserActiveLeases';
 import Template from '../../Cards/Template';
 
@@ -33,21 +30,24 @@ export default function Content() {
       <Typography variant="h6" gutterBottom align='center' sx={{fontWeight: 1000, color: '#065073', fontSize: 25}}>
         Welcome to the Zebra System Management Dashboard
       </Typography>
+      <UserActiveLeases />   
+    </Paper>
+  );
 
-      <UserActiveLeases />
-
-      <Grid container>
+  /*
+<Grid container>
         <Grid item xs sx={{ p: 4.5, }}>
-          <UserAnomalies />
-        </Grid>
-        <Grid item xs sx={{ p: 4.5, }}>
-          <UserInventory />
+           <UserAnomalies />
         </Grid>
         <Grid item xs sx={{ p: 4.5, }}>
           <UserResourceGroupBreakdown />
         </Grid>
+        <Grid item xs sx={{ p: 4.5, }}>
+          <UserInventory />
+        </Grid>
       </Grid>
 
-    </Paper>
-  );
+
+
+  */
 }

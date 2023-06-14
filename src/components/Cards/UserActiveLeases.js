@@ -62,38 +62,26 @@ inventory under management, and any system faults.
             <React.Fragment>
               <CardContent>
                 <Grid container spacing={0}>
-                    <Box sx={{ display: 'inline-block', width: '30%', p: 1.5,}}>
-                        <Typography sx={{ fontSize: 25, fontWeight: 1000, ml: 2 }} color="#065073" gutterBottom >
+                    <Box sx={{ display: 'inline-block', width: '50%', p: 1.5,}}>
+                        <Typography sx={{ fontSize: 25, fontWeight: 1000, ml: 15 }} color="#065073" gutterBottom >
                         Current Lease Requests
                         </Typography>
-                            <Typography sx={{ fontSize: 100, fontWeight: 1000, ml: 15, mt: 0.5,}} color="#599E05" gutterBottom >
+                            <Typography sx={{ fontSize: 100, fontWeight: 1000, ml: 28, mt: 0.5,}} color="#599E05" gutterBottom >
                               {count}
                             </Typography>
                         <Typography sx={{ mr:2 }} color="text.secondary">
                             You currently have {count} ongoing lease request. To manage or add leases, click below.
                         </Typography>
                     </Box>
-                    <Divider orientation="vertical" variant='middle' flexItem />
-                    <Box sx={{ display: 'inline-block', width: '30%', p: 1.5, ml: 7}}>
-                        <Typography sx={{ fontSize: 25, fontWeight: 1000, ml: 11 }} color="#065073" gutterBottom >
-                        Anomalies
-                        </Typography>
-                            <Typography sx={{ fontSize: 100, fontWeight: 1000, ml: 15, mt: 0.5,}} color="#B63722" gutterBottom >
-                            5
-                            </Typography>
-                        <Typography sx={{ mr:2 }} color="text.secondary">
-                            You currently have 5 anomalies in your systems. To review anomalies, click below.
-                        </Typography>
-                    </Box>
                     <Divider orientation="vertical" variant='middle' flexItem/>
-                    <Box sx={{ display: 'inline-block', width: '30%', p: 1.5, ml: 7}}>
-                        <Typography sx={{ fontSize: 25, fontWeight: 1000, ml: 1 }} color="#065073" gutterBottom >
+                    <Box sx={{ display: 'inline-block', width: '49%', p: 1.5,}}>
+                        <Typography sx={{ fontSize: 25, fontWeight: 1000, ml: 15 }} color="#065073" gutterBottom >
                         Systems Under Management
                         </Typography>
-                            <Typography sx={{ fontSize: 100, fontWeight: 1000, ml: 11, mt: 0.5,}} color="#599E05" gutterBottom >
+                            <Typography sx={{ fontSize: 100, fontWeight: 1000, ml: 25, mt: 0.5,}} color="#599E05" gutterBottom >
                             800
                             </Typography>
-                        <Typography sx={{ mr:2 }} color="text.secondary">
+                        <Typography sx={{ ml:5 }} color="text.secondary">
                             You currently have 800 systems assigned to you. To manage or add systems, click below.
                         </Typography>
                     </Box>
@@ -101,7 +89,7 @@ inventory under management, and any system faults.
               </CardContent>
               <CardActions>
                 <BasicModal />
-                <AnomalyModal />
+                
                 <InventoryModal />
               </CardActions>
             </React.Fragment>
