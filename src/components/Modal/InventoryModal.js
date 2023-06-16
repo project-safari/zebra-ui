@@ -22,16 +22,16 @@ const style = {
 };
 
 export default function InventoryModal() {
-  const [openLease, setOpenLease] = React.useState(false);
-  const handleOpenLease = () => setOpenLease(true);
-  const handleCloseLease = () => setOpenLease(false);
+  const [openInventory, setOpenInventory] = React.useState(false);
+  const handleOpenInventory= () => setOpenInventory(true);
+  const handleCloseInventory = () => setOpenInventory(false);
 
   return (
     <div>
-        <Button size="large" sx={{mr: 5, ml: 15}} onClick={handleOpenLease}>View inventory</Button>
+        <Button size="large" sx={{mr: 5, ml: 15}} onClick={handleOpenInventory}>View inventory</Button>
         <Modal
-          open={openLease}
-          onClose={handleCloseLease}
+          open={openInventory}
+          onClose={handleCloseInventory}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
@@ -41,7 +41,7 @@ export default function InventoryModal() {
             </Typography>
             <InventoryDatagrid />
             <Box sx={{display: 'flex', justifyContent: 'flex-end', mt: 2}}>
-              <Button onClick={handleCloseLease} color="primary">
+              <Button onClick={handleCloseInventory} color="primary">
               </Button>
             </Box>
           </Box>
