@@ -202,7 +202,7 @@ function Header(props) {
       <AppBar component="div" position="static" elevation={0} sx={{ zIndex: 0 }}>
         <Tabs value={0} textColor="inherit">
           <Tab label="Inventory" 
-            onClick={() => navigate('/inventory')} />
+            onClick={handleOpenLease} />
           <Tab label="Users" 
             onClick={() => navigate('/users')} />
           <Tab label="Templates" 
