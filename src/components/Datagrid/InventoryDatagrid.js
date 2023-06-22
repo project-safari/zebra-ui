@@ -51,7 +51,7 @@ const columns = [
     { field: 'state', headerName: 'Status', width: 150, editable: true, 
         valueGetter: (params) => {
             (params.row?.status || null)
-        },
+        }, 
         renderCell: (params) => {
             if (params.value === 'active') {
                 return <Chip variant='outlined' size='small' {...getChipProps(params)} />;
@@ -133,6 +133,7 @@ export default function InventoryDatagrid() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [rows, setRows] = useState(null);
+
 
 
     const deleteRow = React.useCallback(async (params) => {
@@ -262,7 +263,7 @@ export default function InventoryDatagrid() {
     }
     //console.log('dataCenterData: ', datacenterData);
     const testData = datacenterData.concat(ipaddresspoolData, rackData, labData, leaseData, serverData, switchData, vlanData, vmData);
-    return (
+   return (
     <Box sx={{ height: 600, width: '100%' }}>
       <DataGrid
         rows={ testData }
@@ -271,10 +272,10 @@ export default function InventoryDatagrid() {
         rowsPerPageOptions={[20]}
         checkboxSelection
         disableSelectionOnClick
-        components={{ Toolbar: GridToolbar }}
+      components={{ Toolbar: GridToolbar }}
         componentsProps={{
             toolbar: {
-                showQuickFilter: true,
+               showQuickFilter: true,
                 quickFilterProps: { debounceMs: 500 },
             },
         }}

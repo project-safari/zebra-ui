@@ -2,10 +2,10 @@ import React, { useCallback, useState } from "react";
 import { PieChart, Pie, Sector } from "recharts";
 
 const data = [
-  { name: "Datacenters", value: 400 },
-  { name: "Servers", value: 300 },
-  { name: "VM", value: 300 },
-  { name: "VLAN", value: 200 }
+  { name: "Datacenters", value: 100 },
+  { name: "Servers", value: 500 },
+  { name: "VM", value: 200 },
+  { name: "VLAN", value: 800 }
 ];
 
 const renderActiveShape = (props) => {

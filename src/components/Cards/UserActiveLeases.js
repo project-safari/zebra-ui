@@ -18,19 +18,71 @@ import AnomalyModal from '../Modal/AnomalyModal';
 import InventoryModal from '../Modal/InventoryModal';
 import API from '../../api/Api';
 import { RESOURCE_URL } from '../../constants/urls';
-
+import  InventoryDatagrid from "../Datagrid/InventoryDatagrid"
 /*
 This card is used for displaying the active leases the user has, 
 inventory under management, and any system faults.
 */
 
+let resNumber;
+// resNumber =  InventoryDatagrid.data.length
+// resNumber = 21
+// pageRows.length - 1
+// resNumber = InventoryDatagrid.getrows().length
 
+// resNumber = InventoryDatagrid.rows.getrows().length
+
+resNumber = InventoryDatagrid.data
+  
+// let anomalyCount;
+// anomalyCount = 0;
 
   export default function Chart() {
-    const [count, setCount] = useState(0);
+    const [count, setCount]= useState(0);
     const [data, setData] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+
+    const  [invCount, resCount]= useState(0);
+    
+    const  [anomalyCount, badCount]= useState(0);
+
+
+    const getAnomaly = async () => {
+      try {
+          const data = await API.get(
+              RESOURCE_URL, {
+          }
+          );
+          setData(data.data.AnomalyModal);
+          console.log(data.data.AnomalyModal.length);
+          badCount(data.data.AnomalyModal.length);
+          console.log(anomalyCount);
+          }
+      catch (e) {
+          setError(e);
+          setLoading(false);
+      }
+      setLoading(false);
+    }
+
+    const getRes = async () => {
+      try {
+          const data = await API.get(
+              RESOURCE_URL, {
+          }
+          );
+          setData(data.data.InventoryModal);
+          console.log(data.data.InventoryModal.length);
+          resCount(data.data.InventoryModal.length);
+          console.log(invCount);
+          }
+      catch (e) {
+          setError(e);
+          setLoading(false);
+      }
+      setLoading(false);
+    }
 
     const getData = async () => {
       try {
@@ -52,10 +104,12 @@ inventory under management, and any system faults.
     useEffect(() => {
         setLoading(true);
         getData();
+        getRes();
+        getAnomaly();
     }
     , []);
     
-    return (
+      return (
       <Box sx={{ minWidth: 275, p: 4.5, }}>
         <Card variant="outlined">
           {
@@ -79,10 +133,10 @@ inventory under management, and any system faults.
                         Anomalies
                         </Typography>
                             <Typography sx={{ fontSize: 100, fontWeight: 1000, ml: 15, mt: 0.5,}} color="#B63722" gutterBottom >
-                            5
+                            {anomalyCount}
                             </Typography>
                         <Typography sx={{ mr:2 }} color="text.secondary">
-                            You currently have 5 anomalies in your systems. To review anomalies, click below.
+                            You currently have {anomalyCount} anomalies in your systems. To review anomalies, click below.
                         </Typography>
                     </Box>
                     <Divider orientation="vertical" variant='middle' flexItem/>
@@ -91,10 +145,10 @@ inventory under management, and any system faults.
                         Systems Under Management
                         </Typography>
                             <Typography sx={{ fontSize: 100, fontWeight: 1000, ml: 11, mt: 0.5,}} color="#599E05" gutterBottom >
-                            800
+                            {invCount}
                             </Typography>
                         <Typography sx={{ mr:2 }} color="text.secondary">
-                            You currently have 800 systems assigned to you. To manage or add systems, click below.
+                            You currently have {invCount} systems assigned to you. To manage or add systems, click below.
                         </Typography>
                     </Box>
                 </Grid>
@@ -110,3 +164,4 @@ inventory under management, and any system faults.
       </Box>
     );
   }
+  

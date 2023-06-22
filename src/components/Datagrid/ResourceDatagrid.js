@@ -1,3 +1,5 @@
+/* Look into getting info for / about this table */ 
+
 import React, { useState, useEffect, useContext } from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';

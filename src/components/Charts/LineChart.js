@@ -56,10 +56,10 @@ const data = [
     return (
         <LineChart width={850} height={250} data={data}
             margin={{ top: 5, right: 5, left: 1, bottom: 15 }}>
-            <text x={850 / 2} y={243} fill="black" textAnchor="middle" dominantBaseline="central">
+        {/*   <text x={850 / 2} y={243} fill="black" textAnchor="middle" dominantBaseline="central">
               <tspan fontSize="16">Note: Uses Mock Data</tspan>
-            </text>
-            <CartesianGrid strokeDasharray="3 3" />
+    </text> 
+            <CartesianGrid strokeDasharray="3 3" /> */}
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
